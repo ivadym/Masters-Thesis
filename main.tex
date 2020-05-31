@@ -1,0 +1,102 @@
+% -*- Mode:TeX -*-
+
+%% IMPORTANT: The official thesis specifications are available at:
+%%            http://libraries.mit.edu/archives/thesis-specs/
+%%
+%%            Please verify your thesis' formatting and copyright
+%%            assignment before submission. If you notice any
+%%            discrepancies between these templates and the 
+%%            MIT Libraries' specs, please let us know
+%%            by e-mailing thesis@mit.edu
+
+%% The documentclass options along with the pagestyle can be used to generate
+%% a technical report, a draft copy, or a regular thesis. You may need to
+%% re-specify the pagestyle after you \include cover.tex. For more
+%% information, see the first few lines of tfm.cls. 
+
+%\documentclass[12pt,vi,twoside]{tfm}
+%%
+%%  If you want your thesis copyright to you instead of MIT, use the
+%%  ``vi'' option, as above.
+%%
+%\documentclass[12pt,twoside,leftblank]{tfm}
+%%
+%% If you want blank pages before new chapters to be labelled ``This
+%% Page Intentionally Left Blank'', use the ``leftblank'' option, as
+%% above.
+
+\documentclass[12pt, twoside]{tfm}
+\usepackage{lgrind}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\pagestyle{plain}
+
+% Cover packages/commands
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{contour}
+\pagenumbering{gobble}
+
+% Bibliography packages/commands
+\usepackage{IEEEtrantools}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black,  citecolor=black]{hyperref}
+\renewcommand{\bibname}{References}
+\usepackage{notoccite}
+
+% List/Sublist
+\usepackage{outlines}
+
+% Images
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup[figure]{labelfont={bf}, labelsep=period}
+
+% Tables
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor} % xcolor package is also used for the cover
+\usepackage{enumitem}
+\captionsetup[table]{labelfont={bf}, labelsep=period}
+
+% Copyright
+\usepackage{textcomp}
+
+%% This bit allows you to either specify only the files which you wish to
+%% process, or `all' to process all files which you \include.
+%% Krishna Sethuraman (1990).
+
+%\typein [\files]{Enter file names to process, (chap1,chap2 ...), or `all' to process all files:}
+\def\all{all}
+\ifx\files\all \typeout{Including all files.} \else %\typeout{Including only \files.} \includeonly{\files} \fi
+
+\begin{document}
+    \bstctlcite{BSTcontrol} % Max bibtex authors
+    \include{Covers/cov_1}
+    \newpage\null\thispagestyle{empty}\newpage
+    \include{Covers/cov_2}
+    \newpage\null\thispagestyle{empty}\newpage
+    \include{Covers/cov_3}
+    \newpage\null\thispagestyle{empty}\newpage
+    \pagenumbering{roman}
+    %\include{Summary/acknowledgments}
+    %\afterpage{\null\newpage}
+    \include{Summary/abstract}
+    \afterpage{\null\newpage}
+    \include{Summary/glossary}
+    \afterpage{\null\newpage}
+    \include{Contents/contents}
+    \newpage\null\newpage
+    \setcounter{page}{0}
+    \pagenumbering{arabic}
+    \include{Chapters/1_introduction}
+    \include{Chapters/2_goals}
+    \include{Chapters/3_materials_and_methods}
+    \include{Chapters/4_results}
+    \include{Chapters/5_discussion}
+    \include{Bibliography/biblio}
+    \appendix
+    \include{Appendices/a_impacts}
+    \include{Appendices/b_budget}
+    \include{Appendices/example_a}
+    \include{Appendices/example_b}
+\end{document}
