@@ -16,13 +16,13 @@ To obtain the necessary data to develop the automatic algorithm for filtering ge
 
 Once the EML4-ALK translocation has been diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is extracted in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its conditioning.
 
-In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions \cite{QUIAGEN_cfDNA, QUIAGEN_exosomes}. Until library preparation for sequencing, conditioned samples were stored at $-80$ \textdegree{C}.
+In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, conditioned samples were stored at $-80$ \textdegree{C}.
 
 Within the context of the project in which this thesis is included, blood samples have been extracted from patients in the pre-treatment stage, at months 2, 4, 6, 8, 12, 15 and 18, and at progression.
 
 \subsection{Library Preparation}
 
-Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to manufacturer's instructions \cite{Oncomine_PanCancer}. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. It enables a limit of detection (LOD) down to 0.1\%, allowing the study of single nucleotide variants (SNVs), short insertions or deletions (indels), copy number variations (CNVs), and fusions. Specifically, the subsequent steps have been followed to prepare the NGS libraries (\autoref{fig:library}):
+Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. It enables a limit of detection (LOD) down to 0.1\%, allowing the study of single nucleotide variants (SNVs), short insertions or deletions (indels), copy number variations (CNVs), and fusions. Specifically, the subsequent steps have been followed to prepare the NGS libraries (\autoref{fig:library}):
 
 \begin{figure}[ht]
     \centering
@@ -41,27 +41,45 @@ Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Onco
     \item \textbf{Library quantification}. To estimate the DNA concentration and to ensure equal representation of the indexed libraries, each of the samples was quantified with a qPCR and compared to the standard curve. Finally, the definitive barcoded libraries were pooled and adjusted to a final concentration of 50 $pM$.
 \end{enumerate}
 
-AMPure XP\textsuperscript\textregistered{} magnetic beads (Beckman Coulter, Inc., Brea, CA, USA) were used to carry out the purification and size selection steps \cite{AMPure}, while the Ion Library TaqMan\texttrademark{} Quantitation Kit (Thermo Fisher, Palo Alto, CA, USA) and the StepOnePlus\texttrademark{} Real-Time PCR System (Thermo Fisher, Palo Alto, CA, USA) were used for the quantification \cite{Quantification_TaqMan, qPCR_StepOnePlus}.
+AMPure XP\textsuperscript\textregistered{} magnetic beads (Beckman Coulter, Inc., Brea, CA, USA) were used to carry out the purification and size selection steps, while the Ion Library TaqMan\texttrademark{} Quantitation Kit (Thermo Fisher, Palo Alto, CA, USA) and the StepOnePlus\texttrademark{} Real-Time PCR System (Thermo Fisher, Palo Alto, CA, USA) were used for the quantification.
 
-\subsection{Template Preparation}
+\subsection{Template Preparation and Chip Loading}
 
-%Ion Chef System Automates template preparation and Ion AmpliSeq library preparation
+Template preparation is based on an emulsion PCR (ePCR) method (\autoref{fig:ePCR}). It begins with the denaturation of the fragmented and ligated DNA, which is then mixed with beads. Each bead has thousands of copies of an oligonucleotide, which is complementary to one of the adapters and to which the corresponding DNA fragments are attached by clonal amplification. Empty beads are discarded and the rest are deposited into wells of a chip (one bead per well).
 
-% ALK paper
-%Eight samples were pooled.  Templating and Ion 550™ Chip loading were carried out on an Ion Chef™ System (Thermo Fisher, Palo Alto, CA, USA). Finally, an Ion GeneStudio™ S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA) was used to sequence loaded Ion 550™ chips.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter_3/ePCR.png}
+    \caption{Ion Torrent NGS template preparation \cite{NGS}.}
+    \label{fig:ePCR}
+\end{figure}
 
-% MAT & MET
-%Eight samples were pooled and templating and Ion 550™ Chip loading were carried out on an Ion Chef™ System (Thermo Fisher, Palo Alto, CA, USA). Finally, loaded Ion 550™ chips were sequenced on an Ion GeneStudio™ S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA).
-
-% CCLM
-%Template preparation and chip loading were carried out on an Ion ChefTM System (Thermo Fisher, Palo Alto, CA, USA). Eight samples were loaded onto an Ion 530 Chip. Finally, loaded Ion 530TM chips were sequenced on an Ion S5TM Sequencer (Thermo Fisher, Palo Alto, CA, USA).
-
-
-% TLCR
-%Template preparation and chip loading were carried out on an Ion ChefTM System (Thermo Fisher, Palo Alto, CA, USA). Eight samples were loaded onto an Ion 550TM chip. Finally, Ion 550TM chips were sequenced in an Ion S5TM Sequencer (Thermo Fisher, Palo Alto, CA, USA).
+For both template preparation and chip loading, the Ion Chef\texttrademark{} System (Thermo Fisher, Palo Alto, CA, USA) was used. It automates these processes, loading up to 8 samples on a single Ion 550\texttrademark{} Chip (Thermo Fisher, Palo Alto, CA, USA), which is subsequently used for sequencing.
 
 \subsection{Sequencing}
 
+The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA). It is a semiconductor-based NGS platform that decodes the template DNA sequence by detecting \ce{H^{+}} ions that are released upon the incorporation of nucleotides to the DNA fragment attached to its corresponding bead. This process happens simultaneously in millions of wells, which contain template-attached beads incubated with DNA polymerase and a particular type of dNTP. Therefore, if that particular dNTP matches the growing template strand, the DNA polymerase adds it, resulting in a discharge of a \ce{H^{+}} ion that will change the pH of the solution in the well. This shift is recorded and converted to voltage, indicating that the nucleotide was incorporated and the base was called (\autoref{fig:NGS_sequencing}).
+ 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter_3/NGS_sequencing.png}
+    \caption{Ion Torrent NGS sequencing: measurement of nucleotide addition \cite{NGS}.}
+    \label{fig:NGS_sequencing}
+\end{figure}
+
+% goodwin 2016
+% The resulting change in pH is detected by an integrated complementary metal-oxide-semiconductor (CMOS) and an ion-sensitive field-effect transistor (ISFET) (FIG. 4b). The pH change detected by the sensor is imperfectly proportional to the number of nucleotides detected, allowing for limited accuracy in measuring homopolymer lengths.
+
+%chadran
+%  If the incubated dNTP matches the growing template strand, the DNA polymerase adds it. The incorporation of dNTP leads to the discharge of a hydrogen ion that activates an ion-sensitive field-effect transistor (ISFET) ion sensor, which can detect the nucleotide by converting the electric signal into base sequences (Fig. 1.4). 
+%The remaining nucleotides are washed out and the next cycle continues.
+% If repeated bases are present in the template, multiple nucleotides will be added in a single cycle; in this case, a stronger electric signal will be detected based on the hydrogen ion release.
+
+% video
+% The release of the hydrogen ion changes the pH of the solution in the well. An ion sensitive layer beneath the well measures the change in pH and convert it to voltage. This voltage change is recorded, indicating the nucleotide was incorporated and the base was called.
+%  If the nucleotide is not complementary to the next base, no ion is release and no voltage change is recorded and no base is called. If there are two identical bases next to each other, two nucleotides are incorporated, the voltage doubles and the chip will record identical bases called. 
+
+%This process happens simultaneously in millions of wells. 
 
 \subsection{Data Analysis}
 

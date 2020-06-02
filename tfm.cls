@@ -350,7 +350,7 @@
    \secdef\@chapter\@schapter}	% to \@afterindenttrue to have indent.
 \fi
 % If using the report style, use - instead of . in the figure number.
-\@ifundefined{thechapter}{}{\def\thefigure{\thechapter-\arabic{figure}}}
+% \@ifundefined{thechapter}{}{\def\thefigure{\thechapter-\arabic{figure}}}
 
 
 %%%%%%%%%  End of Style parameters %%%%
