@@ -45,7 +45,7 @@ AMPure XP\textsuperscript\textregistered{} magnetic beads (Beckman Coulter, Inc.
 
 \subsection{Template Preparation and Chip Loading}
 
-Template preparation is based on an emulsion PCR (ePCR) method (\autoref{fig:ePCR}). It begins with the denaturation of the fragmented and ligated DNA, which is then mixed with beads. Each bead has thousands of copies of an oligonucleotide, which is complementary to one of the adapters and to which the corresponding DNA fragments are attached by clonal amplification. Empty beads are discarded and the rest are deposited into wells of a chip (one bead per well).
+Template preparation is based on an emulsion PCR (ePCR) method (\autoref{fig:ePCR}). It starts with the denaturation of the fragmented and ligated DNA, which is then mixed with beads. Each bead has thousands of copies of an oligonucleotide, which is complementary to one of the adapters and to which the corresponding DNA fragments are attached by clonal amplification. Empty beads are discarded and the rest are deposited into wells of a chip (one bead per well).
 
 \begin{figure}[ht]
     \centering
@@ -58,8 +58,8 @@ For both template preparation and chip loading, the Ion Chef\texttrademark{} Sys
 
 \subsection{Sequencing}
 
-The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA). It is a semiconductor-based NGS platform that decodes the template DNA sequence by detecting \ce{H^{+}} ions that are released upon the incorporation of nucleotides to the DNA fragment attached to its corresponding bead. This process happens simultaneously in millions of wells, which contain template-attached beads incubated with DNA polymerase and a particular type of dNTP. Therefore, if that particular dNTP matches the growing template strand, the DNA polymerase adds it, resulting in a discharge of a \ce{H^{+}} ion that will change the pH of the solution in the well. This shift is recorded and converted to voltage, indicating that the nucleotide was incorporated and the base was called (\autoref{fig:NGS_sequencing}).
- 
+The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA). It is a semiconductor-based NGS platform that decodes the template DNA sequence by detecting \ce{H^{+}} ions that are released upon the incorporation of nucleotides to the DNA fragment attached to its corresponding bead. 
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/NGS_sequencing.png}
@@ -67,39 +67,74 @@ The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} 
     \label{fig:NGS_sequencing}
 \end{figure}
 
-% goodwin 2016
-% The resulting change in pH is detected by an integrated complementary metal-oxide-semiconductor (CMOS) and an ion-sensitive field-effect transistor (ISFET) (FIG. 4b). The pH change detected by the sensor is imperfectly proportional to the number of nucleotides detected, allowing for limited accuracy in measuring homopolymer lengths.
-
-%chadran
-%  If the incubated dNTP matches the growing template strand, the DNA polymerase adds it. The incorporation of dNTP leads to the discharge of a hydrogen ion that activates an ion-sensitive field-effect transistor (ISFET) ion sensor, which can detect the nucleotide by converting the electric signal into base sequences (Fig. 1.4). 
-%The remaining nucleotides are washed out and the next cycle continues.
-% If repeated bases are present in the template, multiple nucleotides will be added in a single cycle; in this case, a stronger electric signal will be detected based on the hydrogen ion release.
-
-% video
-% The release of the hydrogen ion changes the pH of the solution in the well. An ion sensitive layer beneath the well measures the change in pH and convert it to voltage. This voltage change is recorded, indicating the nucleotide was incorporated and the base was called.
-%  If the nucleotide is not complementary to the next base, no ion is release and no voltage change is recorded and no base is called. If there are two identical bases next to each other, two nucleotides are incorporated, the voltage doubles and the chip will record identical bases called. 
-
-%This process happens simultaneously in millions of wells. 
+This process occurs simultaneously in millions of wells, which contain template-attached beads incubated with DNA polymerase and a particular type of dNTP. Therefore, if that specific dNTP matches the growing template strand, the DNA polymerase adds it, resulting in a discharge of a \ce{H^{+}} ion that will change the pH of the solution in the well. This shift is recorded and converted to voltage, indicating that the nucleotide was incorporated and the base was called (\autoref{fig:NGS_sequencing}).
 
 \subsection{Data Analysis}
 
-% MEMO 2007
-% El análisis de los resultados de la dPCR será ciego a la información clínica del paciente. En cada tanda de PCR se incluirá un control negativo, otro positivo (DNA de líneas celulares portadoras de la translocación) y un blanco.
+Data analysis was completed in two consecutive steps. First, a primary analysis was performed to study the overall quality of the sequenced data. Subsequently, the identified genetic variants were analyzed and verified using several software tools.
 
-% ALK paper
-% Torrent Suite Software (v5.10) was used to perform raw sequencing data analysis. The CoverageAnalysis (v. 5.10.0.1) plugin was used for sequencing coverage analysis (Thermo Fisher, Palo Alto, CA, USA). Raw reads were aligned to the human reference genome hg19. Variant calling, annotation and filtering were performed on the Ion Reporter (v5.10) platform using the Oncomine TagSeq Pan-Cancer Liquid Biopsy workflow (v2.1). Briefly, sequencing reads were mapped to defined target regions (Oncomine Pan-Cancer DNA Regions v1.0 (5.10)) and subjected to variant calling using Oncomine Pan-Cancer Annotations v1 r. 0. Integrative Genomics Viewer (IGV V.2.3.40, Broad Institute, Cambridge, MA, USA) was used to visualize sequencing reads.
+\subsubsection{Primary Analysis}
 
-% MAT & MET
-% Analysis of raw sequencing data was performed using Torrent Suite Software (v5.10). For sequencing coverage analysis, the CoverageAnalysis (v. 5.10.0.1) plugin was used (Thermo Fisher, Palo Alto, CA, USA). Raw reads were aligned to the human reference genome hg19. Variant calling, annotation and filtering were performed on the Ion Reporter (v5.10) platform using the Oncomine TagSeq Pan-Cancer Liquid Biopsy w2.1. Briefly, sequencing reads were mapped to defined target regions (Oncomine Pan-Cancer DNA Regions v1.0 (5.10)) and subjected to variant calling using Oncomine Pan-Cancer Annotations v1 r. 0. For visualization of sequencing reads, the Integrative Genomics Viewer (IGV V.2.3.40, Broad Institute, Cambridge, MA, USA) was used.
+The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.10 software, generating at the end of the process a file with the main quality specifications (\autoref{fig:20200108_1}), which include:
+\begin{itemize}
+    \item \textbf{ISP loading density}. Percentage of chip wells that contain an Ion Sphere\texttrademark{} Particle.
+    \item \textbf{Total reads}. Total number of readings associated with a specific barcode.
+    \item \textbf{Read length (bp)}. Length of the called reads.
+\end{itemize}
 
-%CCLM
-% Analysis of raw sequencing data was performed using Torrent Suite Software (v5.6). For sequencing coverage analysis, the Coverag- eAnalysis (v. 5.6.0.1) plugin was used (Thermo Fisher, Palo Alto, CA, USA). Raw reads were aligned to the human reference genome hg19.
-%Variant calling, annotation and filtering were performed on the Ion Reporter (v5.6) platform using the Oncomine Lung Liquid Biopsy workflow (v1.3), which is specifically designed to annotate low fre- quency (up to 0.1% limit of detection [LOD]) variants (SNPs, InDels) from targeted DNA libraries from the Oncomine Lung cfDNA Assay. Briefly, sequencing reads were mapped to defined target regions (Oncomine Lung cfDNA Regions v1.2 and Oncomine Lung cfDNA Hotspots v1.2) and subjected to variant calling using Oncomine Vari- ant Annotator v2.3 plugin. For visualization of sequencing reads, the Integrative Genomics Viewer (IGV V.2.3.40, Broad Institute, Cam- bridge, MA, USA) was used.
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_1.png}
+        \caption{Quality overview of a specific NGS run. The sequencing quality is directly proportional to the value of the ISP loading parameter. \\}
+        \label{fig:20200108_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_2.png}
+        \caption{Quality parameters of 8 sequenced samples. A Gaussian  base pair distribution in each of the histograms is indicative of well-prepared libraries.}
+        \label{fig:20200108_2}
+    \end{subfigure}
+    \hfill
+    \caption{Ion Torrent NGS run summary (NGS run ID: 20200108).}
+    \label{fig:NGS_summary}
+\end{figure}
 
-% TLCR
-% The original EGFR-sensitizing mutation, and the p.T790M and p.C797S resistant mutations were analyzed by digital PCR (dPCR). Specifically, cfDNA was analyzed using commercially available predesigned TaqMan® Liquid Biopsy dPCR assays as well as custom TaqMan® assays in a QuantStudio® 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA). dPCR reactions were carried out in a final volume of 18 μL and using 8.55 μL of cfDNA template. Subsequently, 14.5 μL were loaded into a QuantStudio 3D Digital PCR 20K chip. The cycling conditions were as follows: initial denaturation at 96 °C for 10 min, followed by 40 cycles at 56 °C for 2 min, and 98 °C for 30 s, a step of 72 °C for 10 min, and finally samples were maintained at 22 °C for at least 30 min. Chip fluorescence was measured twice. Results were analyzed with QuantStudio® 3D AnalysisSuiteTM Cloud Software. The automatic call assignments for each data cluster were manually adjusted when needed. The result of the assay is reported as the ratio of mutant DNA molecules relative to the sum of mutant and wild-type (wt) DNA molecules. A negative and a positive control DNA were included in every run.
+Additionally, for each of the samples analyzed in the run (8 samples), the server generates an additional report with the following parameters (\autoref{fig:20200108_2}):
+\begin{itemize}
+    \item \textbf{Bases}. Number of base additions for each barcode.
+    \item \textbf{$\boldsymbol{\ge}$ Q20}. Number of reads that have a predicted quality score of Q20 or better.
+    \item \textbf{Reads}. Total number of filtered and trimmed library reads.
+    \item \textbf{Mean read length (bp)}. Average read length.
+\end{itemize}
+
+This raw data was processed automatically on the Torrent Server\texttrademark{} v5.10 and then aligned to the reference hg19 genome. In this context, to study the sequence coverage for target genomic regions, the  Coverage Analysis Plugin v5.10.0.1 software was used, obtaining the following parameters (\autoref{fig:20200108_4}):
+\begin{itemize}
+    \item \textbf{Mapped reads}. The total number of reads that were mapped to the reference.
+    \item \textbf{On target (\%)}. Percent of reads that were mapped to any targeted region.
+    \item \textbf{Mean depth}. The average number of reads that align to known reference bases.
+    \item \textbf{Uniformity (\%)}. Percentage of bases, in all targeted regions, that is covered by at least 20\% of the average base coverage depth reads.
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_4.png}
+    \caption{Coverage Analysis Plugin output parameters of 8 sequenced samples (NGS run ID: 20200108). Successful sequencing shows a percentage of readings mapped to target regions and uniformity values close to 100\%.}
+    \label{fig:20200108_4}
+\end{figure}
+
+\subsubsection{Secondary Analysis}
+
+After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.10. Variant calling, annotation, and filtering was performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. In this context, with Ion Reporter\texttrademark{} it is possible to identify deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant.
+
+Finally, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently verified by dPCR.
 
 \subsection{Confirmation of the Sequenced Results}
+
+% MEMO 2007
+% El análisis de los resultados de la dPCR será ciego a la información clínica del paciente. En cada tanda de PCR se incluirá un control negativo, otro positivo (DNA de líneas celulares portadoras de la translocación) y un blanco.
 
 % ALK paper
 % The mutations identified by NGS were confirmed by digital PCR (dPCR) on cfDNA samples using a QuantStudio® 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA). As per manufacturer's specifications, dPCR reactions were performed in 18 μL volumes using 9 μL of 20X QuantStudio 3D Master Mix, 0.45 μL of 40X commercially available predesigned or custom TaqMan® assays and 8.55 μL of cfDNA. 14.5 μL of the reaction volume were loaded onto a QuantStudio 3D Digital PCR 20K chip using QuantStudio™ 3D Digital PCR Chip Loader. Each dPCR run included a negative control DNA, as a wild-type (wt) control, and a white. PCR reaction was performed in a thermal cycler (Applied Biosystems) at 96 °C for 10 min, then 40 cycles at 56 °C for 2 min and 98 °C for 30 s, and a final elongation step 72 °C for 10 min. Finally samples were maintained at 22 °C for at least 30 min. After dPCR was completed, chips were loaded into two QuantStudio™ 3D Digital PCR Instruments to reads the fluorescence twice. The readers used an image capture to perform a preliminary analysis and subsequently, data were visualized and analyzed using QuantStudio® 3D Analysis Suite™ Cloud Software. Briefly, the automatic call assignments for each data cluster were manually adjusted when needed. The target concentration was calculated as the ratio of mutant DNA molecules relative to the sum of mutant and wild-type (wt) DNA molecules. Samples with a mutant allele fraction (MAF) equal to or higher than 0.1% were considered positive. The LOD was assessed for all individual assays, being lower than 0.1% in all cases.
@@ -110,11 +145,15 @@ The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} 
 % CCLM
 %Mutations with a minor allele frequency equal to or higher than 0.1%, detected in at least two molecular counts, were consid- ered positive. Mutation confirmation was performed by dPCR. To this aim, cfDNA samples were analyzed using commercially avail- able predesigned TaqMan® Liquid Biopsy dPCR assays and custom TaqMan® assays on a QuantStudio® 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) to confirm the previ- ously detected mutations. For the dPCR reaction, 8.55 μL of template cfDNA was mixed with 0.45 μL of the aforementioned 40X TaqMan® assays and 9 μL of 20 ×  QuantStudio 3D Master Mix, in an 18-μL reaction volume. As previously reported [6], 14.5 μL were loaded into QuantStudio 3D Digital PCR 20K chips. The cycling conditions were as follows: initial denaturation at 96 °C for 10 min, followed by 40 cycles at 56 °C for 2 min and 98 °C for 30 s and an elongation step of 72 °C for 10 min, and finally samples were maintained at 22 °C for at least 30 min. Chip fluorescence was read twice. Results were analyzed using QuantStudio® 3D Analysis SuiteTM Cloud Software. The automatic call assignments for each data cluster were manually adjusted when needed. The result of the assay is reported as the ratio of mutant DNA molecules relative to the sum of mutant and wild-type (wt) DNA molecules. A negative control DNA was included in every run. Samples were considered positive when the mutant allele frac- tion (MAF) was greater than or equal to 0.1%. The LOD was assessed for all individual assays as previously described [4, 7]. In all cases, the LOD was below 0.1%.
 
+
 % TLCR
-% Raw sequencing data were analyzed using Torrent Suite Software (v5.10.0). Sequencing coverage was analyzed using the Coverage Analysis (v.5.10.0.3) plug-in (Thermo Fisher, Palo Alto, CA, USA). Raw reads were aligned to the human reference genome hg19.
-% Variant calling, annotation and filtering were carried out on the Ion Reporter (v5.10) platform using the Oncomine TaqSeq Pan-Cancer Liquid Biopsy workflow (v5.10). The clinical significance of somatic variants was determined according to the Standards and Guidelines for the Interpretation and Reporting of Sequence Variants in Cancer (14). Mutations with an allele frequency (AF) greater than or equal to 0.1% were considered positive.
+% The original EGFR-sensitizing mutation, and the p.T790M and p.C797S resistant mutations were analyzed by digital PCR (dPCR). Specifically, cfDNA was analyzed using commercially available predesigned TaqMan® Liquid Biopsy dPCR assays as well as custom TaqMan® assays in a QuantStudio® 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA). dPCR reactions were carried out in a final volume of 18 μL and using 8.55 μL of cfDNA template. Subsequently, 14.5 μL were loaded into a QuantStudio 3D Digital PCR 20K chip. The cycling conditions were as follows: initial denaturation at 96 °C for 10 min, followed by 40 cycles at 56 °C for 2 min, and 98 °C for 30 s, a step of 72 °C for 10 min, and finally samples were maintained at 22 °C for at least 30 min. Chip fluorescence was measured twice. Results were analyzed with QuantStudio® 3D AnalysisSuiteTM Cloud Software. The automatic call assignments for each data cluster were manually adjusted when needed. The result of the assay is reported as the ratio of mutant DNA molecules relative to the sum of mutant and wild-type (wt) DNA molecules. A negative and a positive control DNA were included in every run.
 
 \subsection{Algorithm development}
 
+
+
+% DRIVE
+% to discern whether a read of a low allele fraction represents a true mutation that exists within a subset of tumor cells or is an artifact that should be discarded.
 
 
