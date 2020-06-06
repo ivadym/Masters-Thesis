@@ -22,7 +22,7 @@ Within the context of the project in which this thesis is included, blood sample
 
 \subsection{Library Preparation}
 
-Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to the manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. It enables a limit of detection (LOD) down to 0.1\%, allowing the study of single nucleotide variants (SNVs), short insertions or deletions (indels), copy number variations (CNVs), and fusions. Specifically, the subsequent steps have been followed to prepare the NGS libraries (\autoref{fig:library}):
+Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to the manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. It enables a limit of detection (LOD) down to 0.1\%, allowing the study of single-nucleotide variants (SNVs), short insertions and deletions (InDels), copy-number variations (CNVs), and fusions. Specifically, the subsequent steps have been followed to prepare the NGS libraries (\autoref{fig:library}):
 
 \begin{figure}[ht]
     \centering
@@ -50,7 +50,7 @@ Template preparation is based on an emulsion PCR (ePCR) method (\autoref{fig:ePC
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/ePCR.png}
-    \caption{Ion Torrent NGS template preparation. Modified image from \cite{NGS}.}
+    \caption{Ion Torrent\texttrademark{} NGS template preparation. Modified image from \cite{NGS}.}
     \label{fig:ePCR}
 \end{figure}
 
@@ -63,7 +63,7 @@ The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/NGS_sequencing.png}
-    \caption{Ion Torrent NGS sequencing: measurement of nucleotide addition. Modified image from \cite{NGS}.}
+    \caption{Ion Torrent\texttrademark{} NGS sequencing: measurement of nucleotide addition. Modified image from \cite{NGS}.}
     \label{fig:NGS_sequencing}
 \end{figure}
 
@@ -98,7 +98,7 @@ The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.10 
         \label{fig:20200108_2}
     \end{subfigure}
     \hfill
-    \caption{Ion Torrent NGS run summary (NGS run ID: 20200108).}
+    \caption{Ion Torrent\texttrademark{} NGS run summary (NGS run ID: 20200108).}
     \label{fig:NGS_summary}
 \end{figure}
 
@@ -125,9 +125,9 @@ This raw data was processed automatically on the Torrent Server\texttrademark{} 
     \label{fig:20200108_4}
 \end{figure}
 
-\subsubsection{Secondary Analysis}
+\subsubsection{Secondary Analysis} \label{Secondary_analysis}
 
-After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.10. Variant calling, annotation, and filtering was performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. In this context, with Ion Reporter\texttrademark{} it was possible to identify deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant.
+After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.10. Variant calling, annotation, and filtering were performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. In this context, with Ion Reporter\texttrademark{} it was possible to identify deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant.
 
 Finally, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently confirmed by dPCR.
 
@@ -182,11 +182,27 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
     \end{figure}
 \end{enumerate}
 
-\subsection{Algorithm development}
+\section{Algorithm Specifications and Requirements} \label{Ch3:Algorithm}
 
+The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
 
-% DRIVE
-% to discern whether a read of a low allele fraction represents a true mutation that exists within a subset of tumor cells or is an artifact that should be discarded.
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the sequencing output file \textit{non-filtered-oncomine.tsv}. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.10), and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will be able to identify samples that have been initially discarded by the internal filters of the Ion Reporter\texttrademark{} software, but are liable to be false negatives. This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
+\begin{itemize}
+    \item Fusions.
+    \item Copy-number variations (CNVs).
+    \item Single-nucleotide polymorphisms (SNPs).
+    \item Insertions and deletions (InDels).
+    \item Multiple-nucleotide polymorphisms (MNPs).
+\end{itemize}
 
-% NGS se equivoca más con los indles
+The programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
+\begin{itemize}
+    \item \textbf{Tcl\slash Tk package}. Tcl is a general-purpose multi-paradigm system scripting language that provides the ability for applications to communicate with each other, while Tk is a cross-platform widget toolkit used for building graphical user interfaces (GUIs). It is included with the installation of \textsf{R}.
+    
+    In this thesis, the Tcl\slash Tk package was used to offer the end-user an intuitive graphical interface to carry out the entire filtering process, including loading the \textit{non-filtered-oncomine.tsv} files, selecting the type of variants to filter by, and saving mutations susceptible to being positive.
+    \item \textbf{Scales (v1.1.1) package}. It contains functions that convert data values to perceptual properties. 
+    
+    In this particular case, it was used to transform the raw data obtained from the \textit{non-filtered-oncomine.tsv} files into interpretable values for the end-user.
+\end{itemize}
 
+Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.
