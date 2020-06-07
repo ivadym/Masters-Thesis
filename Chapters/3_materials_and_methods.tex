@@ -78,7 +78,7 @@ Data analysis was completed in two consecutive steps. First, a primary analysis 
 The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.10 software, generating at the end of the process a file with the main quality specifications (\autoref{fig:20200108_1}), which include:
 \begin{itemize}
     \item \textbf{ISP loading density}. Percentage of chip wells that contain an Ion Sphere\texttrademark{} Particle.
-    \item \textbf{Total reads}. The total number of readings associated with a specific barcode.
+    \item \textbf{Total reads}. The total number of reads associated with a specific barcode.
     \item \textbf{Read length ($\boldsymbol{bp}$)}. Length of the called reads.
 \end{itemize}
 
@@ -121,7 +121,7 @@ This raw data was processed automatically on the Torrent Server\texttrademark{} 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_4.png}
-    \caption{Coverage Analysis Plugin output parameters of 8 sequenced samples (NGS run ID: 20200108). Successful sequencing shows a percentage of readings mapped to target regions and uniformity values close to 100\%.}
+    \caption{Coverage Analysis Plugin output parameters of 8 sequenced samples (NGS run ID: 20200108). Successful sequencing shows a percentage of reads mapped to target regions and uniformity values close to 100\%.}
     \label{fig:20200108_4}
 \end{figure}
 
@@ -135,7 +135,7 @@ Finally, all candidate mutations were manually reviewed using the Integrative Ge
 
 Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations in the cfDNA or cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
 
-Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the amplified target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
+Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the augmented target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
 \begin{enumerate}[font=\bfseries]
     \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cfDNA or cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
     \item \textbf{Chip loading}. 14.5 $\mu L$ of the dPCR reaction was loaded using the QuantStudio\texttrademark{} 3D Digital PCR Chip Loader into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2, which has 20000 wells containing a DNA molecule that will be amplified independently in the thermocycling phase. In addition, positive and negative controls were included in each dPCR run to ensure that the primers have attached to the DNA strand and that there has been no foreign DNA contamination.
