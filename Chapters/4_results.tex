@@ -42,7 +42,7 @@ In order to detect all variants at the ALK gene locus, specific conditions for e
 
 \subsubsection{Fusions Filtering}
 
-The fusions filter selects translocations at the ALK locus with molecular coverage (MOL\_COUNT) $>$ 2 and fusion reads (READ\_COUNT) $>$ 25.
+The fusions filter selects translocations at the ALK locus with molecular coverage (MOL\_COUNT) $>$ 2, and fusion reads (READ\_COUNT) $>$ 25.
 
 On the other hand, two control genes are included in each sequencing process to measure the transcript abundance, TATA-binding protein (TBP) and hydroxymethylbilane synthase (HMBS). Both must have molecular coverage (MOL\_COUNT) $>$ 2 to validate the filtered fusion variants by ensuring their correct amplification.
 
@@ -72,11 +72,45 @@ The sequencing results usually present doubtful data regarding InDels. Therefore
 
 Based on data from confirmed ALK-positive samples, false positives are highly likely in MNPs. In this context, only variants that have been detected in at least 50 molecular counts (FAO) with $\ge$ 200 reads (AO) and an AF $\ge$ 0.03 were considered for confirmation by dPCR. 
 
-On the other hand, Ion GeneStudio\texttrademark{} S5 Sequencer misbehavior at the ALK locus chr2:29443611 position and involving the reading of 6 consecutive guanines (G) has been observed. Thus, variants of that location have been excluded from further analysis.
+On the other hand, abnormal Ion GeneStudio\texttrademark{} S5 Sequencer behavior at position chr2:29443611 of the ALK locus and involving the reading of 6 consecutive guanines (G) has been observed. Thus, variants of that location have been excluded from further analysis.
 
 \subsection{Graphical User Interface (GUI)}
 
+The implemented user interface has been developed to facilitate data input and interpretation of results.
 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_4/GUI_1.png}
+        \caption{GUI start screen. It allows selecting the type of variant\slash s to filter, the gene involved (ALK currently), as well as the source and output files. \\}
+        \label{fig:GUI_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_4/GUI_2.png}
+        \caption{GUI for selecting the \textit{.tsv} source file with the unfiltered variants.}
+        \label{fig:GUI_2}
+    \end{subfigure}
+    \hfill
+    \hfill
+    \begin{subfigure}{0.52\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_4/GUI_3.png}
+        \caption{GUI results screen showing 2 filtered SNPs and the properties that characterize them.}
+        \label{fig:GUI_3}
+    \end{subfigure}
+    \hfill
+    \caption{Implemented GUI that includes the entire filtering process.}
+    \label{fig:GUI}
+\end{figure}
+
+As can be seen in \autoref{fig:GUI_1}, the start screen has several options that allow some variability when proceeding with the filtering process. On the one hand, it is possible to select the filter\slash s to apply to the \textit{non-filtered-oncomine.tsv} file, as well as the gene to study. Currently, and as previously described, only the ALK gene has been addressed. On the other hand, the user can select both the source and output files through a drop-down screen, which is shown in \autoref{fig:GUI_2}. In case the output file does not exist, the program creates it automatically.
+
+Finally, to fully characterize the variants that have passed a particular filter, the results are displayed specifying the mutation type, the row number of the variants in the \textit{non-filtered-oncomine.tsv} file, and the ID of the alternate allele (\autoref{fig:GUI_3}). Simultaneously, each of the identified variants is appended to the output file along with its main characteristics.
+
+It should also be noted that several additional screens have been implemented to offer the end-user information on the progress of the filtering process, on any errors that may have occurred during it, and on the non-identification of any variant of interest by the algorithm.
 
 \section{Statistic Analysis}
 
