@@ -1,6 +1,6 @@
 \chapter{Materials and Methods}
 
-\section{Patients characterization}
+\section{Patients Characterization}
 
 This study is part of the research project entitled "Clinical utility of liquid biopsy in non-small cell lung cancer patients with EML4-ALK translocation". Its objective is to determine the best strategy for the identification of EML4-ALK translocations and to assess the clinical utility of periodic tumor monitoring in ALK-positive NSCLC patients from liquid biopsies. In this context, between June 2015 and July 2019, several ALK-positive NSCLC advanced subjects were recruited from 6 hospitals across Spain, including the Hospital Universitario Puerta de Hierro, the Complejo Hospitalario Universitario A Coruña, the Hospital Universitario Fundación Jiménez Díaz, the Hospital Clínic Barcelona, the Hospital General Universitario de Alicante, and the Hospital General Universitario de Valencia.
 
@@ -8,13 +8,52 @@ The primary study was conducted under the precepts of the Helsinki Declaration a
 
 Eligible patients had histologically confirmed diagnosis of stage III–IV NSCLC that was ALK-positive, a measurable disease according to the response evaluation criteria in solid tumors (RECIST, version 1.1), were candidates to be treated with an ALK inhibitor, and were 18 years old or older. Exclusion criteria included the impossibility of frequent venipuncture or evidence of any other major clinical disorder or finding that would have made it undesirable for the patient to participate in the study.
 
-\section{Laboratory Procedures}
+Finally, for the clinical study, a total of 39 liquid biopsies (37 plasma samples and 2 CSF samples) were obtained from 30 patients who have met the above restrictions. On the other hand, NSCLC ALK-positive samples confirmed by dPCR from the biobank and the sequencing database of the Hospital Universitario Puerta de Hierro have been used to identify the required parameters to design the filtering algorithm.
 
-To obtain the necessary data to develop the automatic algorithm for filtering genetic variants, a series of clinical procedures have been carried out, including the preparation and conditioning of the samples, their sequencing and analysis, and the subsequent confirmation of the ALK-positive samples.
+\section{Algorithm Specifications and Requirements} \label{Ch3:Algorithm}
+
+Next generation sequencing provides unparalleled sequencing information and is becoming the main tool for both understanding tumor heterogeneity and biomarker discovery in cancer research. However, current clinical laboratory practice guidelines for NGS do not provide definitive guidance on filtering and confirming NGS variants.
+
+Furthermore, since the detection of low-frequency mutant alleles may not always be called confidently in NGS, an independent and more targeted and sensitive assay like dPCR is often used. This secondary confirmation is essential for clinical decision-making, where the validation of the mutation has real-world implications.
+
+In this context, the implemented algorithm addresses the standardization of filtering of sequenced data in order to minimize the probability of false-positive and false-negative results, which will eventually avoid unnecessary dPCR runs, optimizing time, and costs. In this way, the main objective of this bioinformatic pipeline is to fully automate the filtering of mutations that is carried out before final confirmation by dPCR.
+
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the biobank and the database of the Hospital Universitario Puerta de Hierro. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the NGS internal filter and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the NGS software but are liable to be false-negatives.
+
+This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
+\begin{itemize}
+    \item Fusions.
+    \item Copy-number variations (CNVs).
+    \item Single-nucleotide polymorphisms (SNPs).
+    \item Insertions and deletions (InDels).
+    \item Multiple-nucleotide polymorphisms (MNPs).
+\end{itemize}
+
+For each of them, minimum standards have been established to consider them valid and proceed with their confirmation by dPCR. Specifically, parameters such as the overall error of the NGS assay, the limit of detection (LOD), the coverage depth, the percentage of targeted bases sequenced at that coverage depth, the total number of target reads covering a variant region, the number of reads supporting a specific variant, and the clinical significance, among others, have been taken into account for the selection of the different thresholds.
+
+Regarding the technical requirements, the programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
+\begin{itemize}
+    \item \textbf{Tcl\slash Tk package}. Tcl is a general-purpose multi-paradigm system scripting language that provides the ability for applications to communicate with each other, while Tk is a cross-platform widget toolkit used for building graphical user interfaces (GUIs). It is included with the installation of \textsf{R}.
+    
+    In this thesis, the Tcl\slash Tk package was used to offer the end-user an intuitive graphical interface to carry out the entire filtering process, including loading the \textit{non-filtered-oncomine.tsv} files, selecting the type of variants to filter by, and saving mutations susceptible to being positive.
+    \item \textbf{Scales (v1.1.1) package}. It contains functions that convert data values to perceptual properties. 
+    
+    In this particular case, it was used to transform the raw data obtained from the \textit{non-filtered-oncomine.tsv} files into interpretable values for the end-user.
+\end{itemize}
+
+Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.
+
+Once the minimum requirements and specifications of the algorithm were established, and after the corresponding in vitro tests, a clinical study was carried out to test its functionalities in a real-world environment.
+
+%%%% TODO
+
+\section{Laboratory Procedures of the Clinical Study}
+
+To obtain the necessary data to develop the automatic algorithm for filtering genetic variants, a series of clinical procedures have been carried out, including the preparation and conditioning of the samples, their sequencing and analysis, and the subsequent confirmation of the ALK-positive mutations.
 
 \subsection{Sample Collection and Conditioning}
 
-Once the EML4-ALK translocation has been diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is extracted in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its conditioning.
+Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is drawn in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its conditioning.
 
 In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, conditioned samples were stored at $-80$ \textdegree{C}.
 
@@ -32,7 +71,7 @@ Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Onco
 \end{figure}
 
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Reverse transcription of cell-free nucleic acids}. This step was only performed with exosome RNA samples, from which cDNA used for the following steps was synthesized.
+    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step.
     \item \textbf{Target amplification}. After the fragmentation of the isolated DNA using enzymatic methods, PCR amplification of these targets produced labeled DNA amplicons within a specific size range.
     \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, in this study, a specific reagent with magnetic beads was used to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from PCR fragments.
     \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA. These adapters, among other functions, allow each sample to be marked with a specific nucleotide code, enabling the sequencer to analyze multiple patient samples simultaneously.
@@ -75,7 +114,7 @@ Data analysis was completed in two consecutive steps. First, a primary analysis 
 
 \subsubsection{Primary Analysis}
 
-The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.10 software, generating at the end of the process a file with the main quality specifications (\autoref{fig:20200108_1}), which include:
+The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.12 software, generating at the end of the process a file with the main quality specifications (\autoref{fig:20200108_1}), which include:
 \begin{itemize}
     \item \textbf{ISP loading density}. Percentage of chip wells that contain an Ion Sphere\texttrademark{} Particle.
     \item \textbf{Total reads}. The total number of reads associated with a specific barcode.
@@ -93,8 +132,8 @@ The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.10 
     \hfill
     \begin{subfigure}{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_2.png}
-        \caption{Quality parameters of 8 sequenced samples. A Gaussian  base pair distribution in each of the histograms is indicative of well-prepared libraries.}
+        \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_2_v2.png}
+        \caption{Quality parameters of 4 of the 8 sequenced samples. A Gaussian  base pair distribution in each of the histograms is indicative of well-prepared libraries.}
         \label{fig:20200108_2}
     \end{subfigure}
     \hfill
@@ -110,7 +149,7 @@ Additionally, for each of the samples analyzed in the run (8 samples), the serve
     \item \textbf{Mean read length ($\boldsymbol{bp}$)}. Average read length.
 \end{itemize}
 
-This raw data was processed automatically on the Torrent Server\texttrademark{} v5.10 and then aligned to the reference hg19 genome. In this context, to study the sequence coverage for target genomic regions, the Coverage Analysis Plugin v5.10.0.1 was used, obtaining the following parameters (\autoref{fig:20200108_4}):
+This raw data was processed automatically on the Torrent Server\texttrademark{} v5.12 and then aligned to the reference hg19 genome. In this context, to study the sequence coverage for target genomic regions, the Coverage Analysis Plugin v5.12.0.0 was used, obtaining the following parameters (\autoref{fig:20200108_4}):
 \begin{itemize}
     \item \textbf{Mapped reads}. The total number of reads that were mapped to the reference.
     \item \textbf{On target (\%)}. Percent of reads that were mapped to any targeted region.
@@ -120,29 +159,29 @@ This raw data was processed automatically on the Torrent Server\texttrademark{} 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_4.png}
-    \caption{Coverage Analysis Plugin output parameters of 8 sequenced samples (NGS run ID: 20200108). Successful sequencing shows a percentage of reads mapped to target regions and uniformity values close to 100\%.}
+    \includegraphics[width=\textwidth]{Images/chapter_3/20200108/20200108_4_v2.png}
+    \caption{Coverage Analysis Plugin output parameters of 4 of the 8 sequenced samples (NGS run ID: 20200108). Successful sequencing shows a percentage of reads mapped to target regions and uniformity values close to 100\%.}
     \label{fig:20200108_4}
 \end{figure}
 
 \subsubsection{Secondary Analysis} \label{Secondary_analysis}
 
-After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.10. Variant calling, annotation, and filtering were performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. In this context, with Ion Reporter\texttrademark{} it was possible to identify deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant.
+After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.12. Variant calling, annotation, and filtering were performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. In this context, with Ion Reporter\texttrademark{} it was possible to identify deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant.
 
 Finally, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently confirmed by dPCR.
 
 \subsection{Confirmation of the Sequenced Results}
 
-Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations in the cfDNA or cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
+Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations in the cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
 
 Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the augmented target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cfDNA or cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
+    \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type (WT) DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
     \item \textbf{Chip loading}. 14.5 $\mu L$ of the dPCR reaction was loaded using the QuantStudio\texttrademark{} 3D Digital PCR Chip Loader into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2, which has 20000 wells containing a DNA molecule that will be amplified independently in the thermocycling phase. In addition, positive and negative controls were included in each dPCR run to ensure that the primers have attached to the DNA strand and that there has been no foreign DNA contamination.
     \begin{figure}[t]
         \centering
         \includegraphics[width=\textwidth]{Images/chapter_3/chip_loading.png}
-        \caption{ Chip loading \cite{dPCR_QuantStudio}. Charging of the dPCR reaction into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2 (1), lid application (2), filling of the assembly with Immersion Fluid (3), and sealing of the loading port (4). Modified image from \cite{dPCR_QuantStudio}.}
+        \caption{ Chip loading. Charging of the dPCR reaction into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2 (1), lid application (2), filling of the assembly with Immersion Fluid (3), and sealing of the loading port (4). Modified image from \cite{dPCR_QuantStudio}.}
         \label{fig:Chip_loading}
     \end{figure}
     \item \textbf{Thermocycling}. This process, which was divided into 3 consecutive stages, was carried out with the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA). The temperature, duration, and number of cycles for each of the stages are summarized in \autoref{tab:dPCR_stages}. During the amplification stage, the Taq polymerase enzyme cleaves the aforementioned FAM\texttrademark{} and VIC\texttrademark{} bound probes, generating fluorescent signals that will be recorded and associated with specific wells on the chip in the next step.
@@ -160,7 +199,14 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
         \label{tab:dPCR_stages}
     \end{table}
     \item \textbf{Chip reading}. After completing the thermocycling process, the chips were loaded into the QuantStudio\texttrademark{} 3D Digital PCR Instrument to read their fluorescence. This reading was performed twice to ensure that the subsequent data review is accurate and reliable.
-    \item \textbf{Results interpretation}. The previously conditioned data were visualized and analyzed using the QuantStudio\texttrademark{} 3D Analysis Suite\texttrademark{} Cloud Software (\autoref{fig:FAM_VIC}). In this context, samples with a mutant allele fraction ($MAF = \frac{FAM_{copies}/\mu L}{FAM_{copies}/\mu L \ + \ VIC_{copies}/\mu L}$) equal to or higher than 0.1\% were considered positive. Additionally, the LOD was assessed for all individual assays, being lower than 0.1\% in all cases.
+    \item \textbf{Results interpretation}. The previously conditioned data were visualized and analyzed using the QuantStudio\texttrademark{} 3D Analysis Suite\texttrademark{} Cloud Software (\autoref{fig:FAM_VIC}). In this context, samples with a mutant allele fraction (MAF) equal to or higher than 0.1\% were considered positive (\autoref{eq:MAF}). Additionally, the LOD was assessed for all individual assays, being lower than 0.1\% in all cases.
+    \begin{align} \label{eq:MAF}
+        MAF &= \frac{FAM_{copies}/\mu L}{FAM_{copies}/\mu L \ + \ VIC_{copies}/\mu L} \\
+        \text{where}~
+        FAM_{copies} &\equiv \text{Number of reads of the mutated sequences} \notag \\
+        VIC_{copies} &\equiv \text{Number of reads of the WT sequences} \notag
+    \end{align}
+
     \begin{figure}[t]
         \centering
         \begin{subfigure}{0.30\textwidth}
@@ -177,32 +223,7 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
             \label{fig:FAM_VIC_dispersion}
         \end{subfigure}
         \hfill
-        \caption{Quality and calls review of the dPCR. The red, blue, and green colors correspond to the VIC\texttrademark{} (fluorescence of the wild type sequences), FAM\texttrademark{} (fluorescence of the mutated sequences), and VIC\texttrademark{}+FAM\texttrademark{} groups respectively, while the yellow represents the wells without amplification.}
+        \caption{Quality and calls review of the dPCR. The red, blue, and green colors correspond to the VIC\texttrademark{} (fluorescence of the WT sequences), FAM\texttrademark{} (fluorescence of the mutated sequences), and VIC\texttrademark{}+FAM\texttrademark{} groups respectively, while the yellow represents the wells without amplification.}
         \label{fig:FAM_VIC}
     \end{figure}
 \end{enumerate}
-
-\section{Algorithm Specifications and Requirements} \label{Ch3:Algorithm}
-
-The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
-
-The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the sequencing output file \textit{non-filtered-oncomine.tsv}. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.10), and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will be able to identify samples that have been initially discarded by the internal filters of the Ion Reporter\texttrademark{} software, but are liable to be false negatives. This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
-\begin{itemize}
-    \item Fusions.
-    \item Copy-number variations (CNVs).
-    \item Single-nucleotide polymorphisms (SNPs).
-    \item Insertions and deletions (InDels).
-    \item Multiple-nucleotide polymorphisms (MNPs).
-\end{itemize}
-
-The programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
-\begin{itemize}
-    \item \textbf{Tcl\slash Tk package}. Tcl is a general-purpose multi-paradigm system scripting language that provides the ability for applications to communicate with each other, while Tk is a cross-platform widget toolkit used for building graphical user interfaces (GUIs). It is included with the installation of \textsf{R}.
-    
-    In this thesis, the Tcl\slash Tk package was used to offer the end-user an intuitive graphical interface to carry out the entire filtering process, including loading the \textit{non-filtered-oncomine.tsv} files, selecting the type of variants to filter by, and saving mutations susceptible to being positive.
-    \item \textbf{Scales (v1.1.1) package}. It contains functions that convert data values to perceptual properties. 
-    
-    In this particular case, it was used to transform the raw data obtained from the \textit{non-filtered-oncomine.tsv} files into interpretable values for the end-user.
-\end{itemize}
-
-Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.

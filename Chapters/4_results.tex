@@ -21,9 +21,65 @@
 % -Niveles plasmáticos de EML4-ALK
 
 % ALK paper
-% In total, 33 plasma and 2 cerebrospinal fluid (CSF) specimens were collected and analyzed. Samples were collected at the time of disease progression which was assessed according to RECIST criteria v.1. 
+% In total, 33 plasma and 2 cerebrospinal fluid (CSF) specimens were collected and analyzed. Samples were collected at the time of disease progression which was assessed according to RECIST criteria v.1.
 
-\newpage
+
+\begin{table}[ht]
+\centering
+\resizebox{0.65\textwidth}{!}{
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cccc}
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Clinical feature} & \textbf{Categorization}  & \textbf{N} & \textbf{\%} \\
+\rowcolor[HTML]{FFFFFF}
+\textbf{Age of diagnosis} & Median & 54 & \\
+\rowcolor[HTML]{EFEFEF}
+\cellcolor[HTML]{EFEFEF} & Male & 13 & 43.3 \% \\
+\rowcolor[HTML]{EFEFEF}
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Sex}} & Female & 17 & 56.7 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Current smokers & 4 & 13.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Ex-smokers & 8 & 26.7 \% \\
+\rowcolor[HTML]{FFFFFF}
+\multirow{-3}{*}{\cellcolor[HTML]{FFFFFF}\textbf{Smoking status}} & Never smokers & 18 & 60 \% \\
+\rowcolor[HTML]{EFEFEF}
+\cellcolor[HTML]{EFEFEF} & 0 & 14 & 46.7 \% \\
+\rowcolor[HTML]{EFEFEF}
+\cellcolor[HTML]{EFEFEF} & 1 & 13 & 43.3 \% \\
+\rowcolor[HTML]{EFEFEF}
+\multirow{-3}{*}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}ECOG\\ performance status\end{tabular}}} & 2 & 3 & 10 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Adenocarcinoma & 28 & 93.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}\textbf{Histology}} & Neuroendocrine carcinoma & 2 & 6.7 \% \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF} & II & 1 & 3.3 \% \\
+\rowcolor[HTML]{EFEFEF}
+\cellcolor[HTML]{EFEFEF} & III & 6 & 20 \% \\
+\rowcolor[HTML]{EFEFEF}
+\multirow{-3}{*}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Initial\\ clinical stage\end{tabular}}}  & IV & 23 & 76.7 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Alectinib & 11 & 36.7 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Crizotinib & 10 & 33.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Ceritinib & 4 & 13.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & No treatment & 2 & 6.7 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Brigatinib & 1 & 3.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\cellcolor[HTML]{FFFFFF} & Lorlatinib & 1 & 3.3 \% \\
+\rowcolor[HTML]{FFFFFF}
+\multirow{-7}{*}{\cellcolor[HTML]{FFFFFF}\textbf{Treatment}} & Chemotherapy & 1 & 3.3 \%
+\end{tabular}}
+\caption{aaaaaaaa.}
+\label{tab:Patients}
+\end{table}
+
+\section{Next Generation Sequencing Characterization}
+
 
 \section{Implemented Pipeline}
 
@@ -51,7 +107,7 @@ On the other hand, two control genes are included in each sequencing process to 
 Following the Ion Reporter\texttrademark{} recommendations, to make a CNV call, the median of the absolute values of all pairwise differences (MAPD) must be $<$ 0.4. MAPD measures the absolute difference between the $log_2$ copy number ratios of adjacent amplicons and then calculates the median across all wells (\autoref{eq:MAPD}). Larger MAPD values indicate lower coverage uniformity and greater noise, resulting in a higher probability of erroneous CNV calls. Therefore, only samples showing an MAPD $<$ 0.4 were considered in further analysis, which consisted of selecting (FILTER) copy loss and gain in the ALK gene.
 \begin{align} \label{eq:MAPD}
     MAPD &= median(\mid x_{i+1}-x_i \mid) \\
-    \text{where}~  
+    \text{where}~
     x_i &\equiv \text{$log_2$ ratio for marker i} \notag
 \end{align}
 
@@ -112,6 +168,19 @@ Finally, to fully characterize the variants that have passed a particular filter
 
 It should also be noted that several additional screens have been implemented to offer the end-user information on the progress of the filtering process, on any errors that may have occurred during it, and on the non-identification of any variant of interest by the algorithm.
 
+\section{Spectrum and Significance of Mutations}
+
+
+
+
+% NSCLC_alterations
+% Furthermore, tumours bearing co-mutations in TP53 exhibit higher degrees of copy number genomic instabi- lity (aneuploidy) and a higher somatic mutation burden, both on the trunk and in the branches of the tumour phylogenetic tree104. Therefore, TP53 co-mutations impact the natural history of EGFR-mutant NSCLC at least partially by allowing tolerance of a greater degree of genomic instability, which results in both larger num- bers of co-occurring truncal drivers and late subclonal diversification with focal emergence of high-amplitude amplifications and deletions in mediators of therapeutic resistance104. In keeping with a more complex genomic landscape and a larger burden of clonal or subclonal co-drivers, multiple clinical studies have identified TP53 co-alterations as a negative prognostic marker in EGFR-mutant LUAD and a consistent predictor of worse clinical outcomes following EGFR TKI therapy
+
+% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6225899/
+% In ALK-rearranged NSCLC co-occurring TP53 mutations predict an unfavorable outcome of systemic therapy.
+
+
+
 \section{Statistic Analysis}
 
 % Análisis estadístico
@@ -119,3 +188,7 @@ It should also be noted that several additional screens have been implemented to
 % Para evaluar la concordancia del status de la translocación (positivo/negativo) entre las muestras de sangre (plaquetas y plasma) pre-tratamiento y el tejido se empleará el coeficiente Kappa de Cohen y su intervalo de confianza. Además, se analizará la sensibilidad, especificidad, valor predictivo positivo y valor predictivo negativo de la detección de la translocación en plasma (exosomas) y plaquetas, tomando como gold standar el resultado del tejido.
 % Para analizar los datos de supervivencia de los pacientes se tomará como fecha de inicio, la fecha de inicio al tratamiento en primera línea y se recabarán los datos de: fecha de progresión, de muerte o fecha de última visita al oncólogo. La supervivencia libre de progresión se calculará desde la fecha de inicio al tratamiento en primera línea. Para el análisis de PFS y SG se usará el método de Kaplan-Meier y como estadístico de contraste se usará el Log- Rank. Los valores de los HR obtenidos serán ajustados por las variables clínico-patologícas pertinentes.
 %Las pruebas con un valor de p <0.05 serán consideradas estadísticamente significativas.
+
+\section{Utility}
+
+% A key benefit for physicians is the serial use of digital PCR to monitor one or more driver mutations throughout treatment to determine response and recurrence since the level of mutated DNA found in liquid biopsies has been found to reflect the size of the tumor(s). It is also possible to use NGS to track progress; however, in these cases it is less practical due to cost and longer turnaround time.
