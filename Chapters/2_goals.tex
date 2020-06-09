@@ -2,13 +2,16 @@
 
 Diagnosis and targeting of ALK-positive NSCLC now form part of clinical routine, and the results obtained with ALK inhibitors are unprecedented considering the PFS and OS. However, although the development of novel drugs will continue to be a priority of cancer treatment, there is a need for better prognostic tools to assess therapeutic response, monitor tumor progression, and predict clinical outcomes.
 
-In this context, the main objective of this thesis is to develop a new tool to better stratify patients, improving the current analysis of sequenced data from liquid biopsy samples. Eventually, this will allow oncologists to have more reliable information on the patient's tumor phenotype, favoring the introduction of more individualized and optimal treatments in clinical practice, without the risks associated with tissue biopsies.
+One of these tools is next generation sequencing (NGS). It provides unparalleled sequencing information and is becoming the main mechanism for both understanding tumor heterogeneity and biomarker discovery in cancer research. However, current clinical laboratory practice guidelines for NGS do not provide definitive guidance on filtering and confirming NGS variants.
 
-This goal has led to the use in this study of non-invasive methods of describing tumor phenotype to filter driver mutations in the ALK gene, including ctDNA and exosomes. Specifically, with the combination of molecular techniques and bioinformatics, this master's thesis aims to:
+Furthermore, since the detection of low-frequency mutant alleles may not always be called confidently in NGS, an independent and more targeted and sensitive assay like dPCR is often used. This secondary confirmation is essential for clinical decision-making, where the validation of the mutation has real-world implications.
+
+In this context, the main objective of this thesis is to develop a new tool that addresses the standardization of filtering of sequenced data to minimize the probability of false-positive and false-negative results, which will prevent unnecessary dPCR runs, optimizing time and costs. In short, this bioinformatic pipeline will be able to fully automate the filtering of mutations that is carried out before final confirmation by dPCR, enabling a better stratification of patients and improving the current analysis of sequenced data from liquid biopsy samples. Additionally, it will allow oncologists to have more reliable information on the patient's tumor phenotype, favoring the introduction of more individualized and optimal treatments in clinical practice without the risks associated with tissue biopsies.
+
+Finally, this goal has led to the use in this study of non-invasive methods of describing tumor phenotype to filter driver mutations in the ALK gene, including ctDNA and exosomes. Specifically, with the combination of molecular techniques and bioinformatics, this master's thesis aims to:
 \begin{outline}
-    \1 Study the patterns of previously sequenced ALK-positive NSCLC samples confirmed by dPCR from the biobank of the Hospital Universitario Puerta de Hierro.
-    \1 Develop an automatic algorithm for filtering somatic mutations in the ALK gene.
-    \1 Perform a clinical study of mutations from circulating DNA and exosomes in a cohort of patients with ALK-positive advanced NSCLC confirmed by an anatomic pathology report (FISH and\slash or IHC).
+    \1 Perform a clinical study of mutations from circulating DNA and exosomes in a cohort of patients with advanced NSCLC.
+    \1 Develop an automatic algorithm for filtering ALK-positive NSCLC somatic mutations from sequenced samples confirmed by dPCR.
     \1 Estimate the utility of NGS and the developed algorithm for:
         \2 Detecting oncogenic drivers.
         \2 Identifying resistance mutations.

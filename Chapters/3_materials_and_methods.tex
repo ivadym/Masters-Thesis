@@ -8,48 +8,14 @@ The primary study was conducted under the precepts of the Helsinki Declaration a
 
 Eligible patients had histologically confirmed diagnosis of stage III–IV NSCLC that was ALK-positive, a measurable disease according to the response evaluation criteria in solid tumors (RECIST, version 1.1), were candidates to be treated with an ALK inhibitor, and were 18 years old or older. Exclusion criteria included the impossibility of frequent venipuncture or evidence of any other major clinical disorder or finding that would have made it undesirable for the patient to participate in the study.
 
-Finally, for the clinical study, a total of 39 liquid biopsies (37 plasma samples and 2 CSF samples) were obtained from 30 patients who have met the above restrictions. On the other hand, NSCLC ALK-positive samples confirmed by dPCR from the biobank and the sequencing database of the Hospital Universitario Puerta de Hierro have been used to identify the required parameters to design the filtering algorithm.
+Finally, for this project, a total of 39 liquid biopsies (37 plasma samples and 2 CSF samples) obtained from 30 patients who have met the above restrictions were used.
 
-\section{Algorithm Specifications and Requirements} \label{Ch3:Algorithm}
+\section{Laboratory Procedures}
 
-Next generation sequencing provides unparalleled sequencing information and is becoming the main tool for both understanding tumor heterogeneity and biomarker discovery in cancer research. However, current clinical laboratory practice guidelines for NGS do not provide definitive guidance on filtering and confirming NGS variants.
+In order to identify the required parameters to design and implement the automatic algorithm for filtering genetic variants, several clinical procedures have been carried out, including the preparation and conditioning of the ALK-positive NSCLC samples, their sequencing and analysis, and the subsequent confirmation of the identified mutations.
 
-Furthermore, since the detection of low-frequency mutant alleles may not always be called confidently in NGS, an independent and more targeted and sensitive assay like dPCR is often used. This secondary confirmation is essential for clinical decision-making, where the validation of the mutation has real-world implications.
 
-In this context, the implemented algorithm addresses the standardization of filtering of sequenced data in order to minimize the probability of false-positive and false-negative results, which will eventually avoid unnecessary dPCR runs, optimizing time, and costs. In this way, the main objective of this bioinformatic pipeline is to fully automate the filtering of mutations that is carried out before final confirmation by dPCR.
 
-The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the biobank and the database of the Hospital Universitario Puerta de Hierro. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the NGS internal filter and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the NGS software but are liable to be false-negatives.
-
-This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
-\begin{itemize}
-    \item Fusions.
-    \item Copy-number variations (CNVs).
-    \item Single-nucleotide polymorphisms (SNPs).
-    \item Insertions and deletions (InDels).
-    \item Multiple-nucleotide polymorphisms (MNPs).
-\end{itemize}
-
-For each of them, minimum standards have been established to consider them valid and proceed with their confirmation by dPCR. Specifically, parameters such as the overall error of the NGS assay, the limit of detection (LOD), the coverage depth, the percentage of targeted bases sequenced at that coverage depth, the total number of target reads covering a variant region, the number of reads supporting a specific variant, and the clinical significance, among others, have been taken into account for the selection of the different thresholds.
-
-Regarding the technical requirements, the programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
-\begin{itemize}
-    \item \textbf{Tcl\slash Tk package}. Tcl is a general-purpose multi-paradigm system scripting language that provides the ability for applications to communicate with each other, while Tk is a cross-platform widget toolkit used for building graphical user interfaces (GUIs). It is included with the installation of \textsf{R}.
-    
-    In this thesis, the Tcl\slash Tk package was used to offer the end-user an intuitive graphical interface to carry out the entire filtering process, including loading the \textit{non-filtered-oncomine.tsv} files, selecting the type of variants to filter by, and saving mutations susceptible to being positive.
-    \item \textbf{Scales (v1.1.1) package}. It contains functions that convert data values to perceptual properties. 
-    
-    In this particular case, it was used to transform the raw data obtained from the \textit{non-filtered-oncomine.tsv} files into interpretable values for the end-user.
-\end{itemize}
-
-Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.
-
-Once the minimum requirements and specifications of the algorithm were established, and after the corresponding in vitro tests, a clinical study was carried out to test its functionalities in a real-world environment.
-
-%%%% TODO
-
-\section{Laboratory Procedures of the Clinical Study}
-
-To obtain the necessary data to develop the automatic algorithm for filtering genetic variants, a series of clinical procedures have been carried out, including the preparation and conditioning of the samples, their sequencing and analysis, and the subsequent confirmation of the ALK-positive mutations.
 
 \subsection{Sample Collection and Conditioning}
 
@@ -71,7 +37,10 @@ Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Onco
 \end{figure}
 
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step.
+    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step. 
+    
+    The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
+    
     \item \textbf{Target amplification}. After the fragmentation of the isolated DNA using enzymatic methods, PCR amplification of these targets produced labeled DNA amplicons within a specific size range.
     \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, in this study, a specific reagent with magnetic beads was used to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from PCR fragments.
     \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA. These adapters, among other functions, allow each sample to be marked with a specific nucleotide code, enabling the sequencer to analyze multiple patient samples simultaneously.
@@ -227,3 +196,34 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
         \label{fig:FAM_VIC}
     \end{figure}
 \end{enumerate}
+
+\section{Algorithm Specifications and Requirements}
+
+%% GITHUB
+
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the biobank and the database of the Hospital Universitario Puerta de Hierro. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the NGS internal filter and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the NGS software but are liable to be false-negatives.
+
+This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
+\begin{itemize}
+    \item Fusions.
+    \item Copy-number variations (CNVs).
+    \item Single-nucleotide polymorphisms (SNPs).
+    \item Insertions and deletions (InDels).
+    \item Multiple-nucleotide polymorphisms (MNPs).
+\end{itemize}
+
+For each of them, minimum standards have been established to consider them valid and proceed with their confirmation by dPCR. Specifically, parameters such as the overall error of the NGS assay, the limit of detection (LOD), the coverage depth, the percentage of targeted bases sequenced at that coverage depth, the total number of target reads covering a variant region, the number of reads supporting a specific variant, and the clinical significance, among others, have been taken into account for the selection of the different thresholds.
+
+Regarding the technical requirements, the programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
+\begin{itemize}
+    \item \textbf{Tcl\slash Tk package}. Tcl is a general-purpose multi-paradigm system scripting language that provides the ability for applications to communicate with each other, while Tk is a cross-platform widget toolkit used for building graphical user interfaces (GUIs). It is included with the installation of \textsf{R}.
+    
+    In this thesis, the Tcl\slash Tk package was used to offer the end-user an intuitive graphical interface to carry out the entire filtering process, including loading the \textit{non-filtered-oncomine.tsv} files, selecting the type of variants to filter by, and saving mutations susceptible to being positive.
+    \item \textbf{Scales (v1.1.1) package}. It contains functions that convert data values to perceptual properties. 
+    
+    In this particular case, it was used to transform the raw data obtained from the \textit{non-filtered-oncomine.tsv} files into interpretable values for the end-user.
+\end{itemize}
+
+Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.
+
+Once the minimum requirements and specifications of the algorithm were established, and after the corresponding in vitro tests, a clinical study was carried out to test its functionalities in a real-world environment.
