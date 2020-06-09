@@ -12,18 +12,15 @@ Finally, for this project, a total of 39 liquid biopsies (37 plasma samples and 
 
 \section{Laboratory Procedures}
 
-In order to identify the required parameters to design and implement the automatic algorithm for filtering genetic variants, several clinical procedures have been carried out, including the preparation and conditioning of the ALK-positive NSCLC samples, their sequencing and analysis, and the subsequent confirmation of the identified mutations.
+In order to identify the required parameters to design and implement the automatic algorithm for filtering genetic variants, several clinical procedures have been carried out, including the collection and conditioning of the ALK-positive NSCLC samples, their sequencing and analysis, and the subsequent confirmation of the identified mutations.
 
+\subsection{Sample Collection and Processing}
 
+Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is drawn into a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its processing. Within the context of the aforementioned project, blood samples have been extracted from patients in the pre-treatment stage, at months 2, 4, 6, 8, 12, 15 and 18, and at progression.
 
+In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, the last step of the cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, processed samples were stored at $-80$ \textdegree{C}.
 
-\subsection{Sample Collection and Conditioning}
-
-Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is drawn in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its conditioning.
-
-In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, conditioned samples were stored at $-80$ \textdegree{C}.
-
-Within the context of the project in which this thesis is included, blood samples have been extracted from patients in the pre-treatment stage, at months 2, 4, 6, 8, 12, 15 and 18, and at progression.
+Regarding CSF samples, their processing was identical to that described for plasma. These were first collected in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube and then the CSF nucleic acids were isolated using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA).
 
 \subsection{Library Preparation}
 
@@ -37,10 +34,7 @@ Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Onco
 \end{figure}
 
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step. 
-    
-    The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
-    
+    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step.
     \item \textbf{Target amplification}. After the fragmentation of the isolated DNA using enzymatic methods, PCR amplification of these targets produced labeled DNA amplicons within a specific size range.
     \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, in this study, a specific reagent with magnetic beads was used to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from PCR fragments.
     \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA. These adapters, among other functions, allow each sample to be marked with a specific nucleotide code, enabling the sequencer to analyze multiple patient samples simultaneously.
@@ -141,11 +135,11 @@ Finally, all candidate mutations were manually reviewed using the Integrative Ge
 
 \subsection{Confirmation of the Sequenced Results}
 
-Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations in the cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
+Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations in the cfDNA or cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
 
 Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the augmented target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type (WT) DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
+    \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cfDNA or cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type (WT) DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
     \item \textbf{Chip loading}. 14.5 $\mu L$ of the dPCR reaction was loaded using the QuantStudio\texttrademark{} 3D Digital PCR Chip Loader into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2, which has 20000 wells containing a DNA molecule that will be amplified independently in the thermocycling phase. In addition, positive and negative controls were included in each dPCR run to ensure that the primers have attached to the DNA strand and that there has been no foreign DNA contamination.
     \begin{figure}[t]
         \centering
@@ -168,7 +162,7 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
         \label{tab:dPCR_stages}
     \end{table}
     \item \textbf{Chip reading}. After completing the thermocycling process, the chips were loaded into the QuantStudio\texttrademark{} 3D Digital PCR Instrument to read their fluorescence. This reading was performed twice to ensure that the subsequent data review is accurate and reliable.
-    \item \textbf{Results interpretation}. The previously conditioned data were visualized and analyzed using the QuantStudio\texttrademark{} 3D Analysis Suite\texttrademark{} Cloud Software (\autoref{fig:FAM_VIC}). In this context, samples with a mutant allele fraction (MAF) equal to or higher than 0.1\% were considered positive (\autoref{eq:MAF}). Additionally, the LOD was assessed for all individual assays, being lower than 0.1\% in all cases.
+    \item \textbf{Results interpretation}. The previously processed data were visualized and analyzed using the QuantStudio\texttrademark{} 3D Analysis Suite\texttrademark{} Cloud Software (\autoref{fig:FAM_VIC}). In this context, samples with a mutant allele fraction (MAF) equal to or higher than 0.1\% were considered positive (\autoref{eq:MAF}). Additionally, the LOD was assessed for all individual assays, being lower than 0.1\% in all cases.
     \begin{align} \label{eq:MAF}
         MAF &= \frac{FAM_{copies}/\mu L}{FAM_{copies}/\mu L \ + \ VIC_{copies}/\mu L} \\
         \text{where}~
