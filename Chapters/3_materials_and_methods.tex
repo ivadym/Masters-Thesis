@@ -20,27 +20,42 @@ Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an a
 
 In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, the last step of the cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, processed samples were stored at $-80$ \textdegree{C}.
 
-Regarding CSF samples, their processing was identical to that described for plasma. These were first collected in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube and then the CSF nucleic acids were isolated using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA).
+Regarding CSF samples, their processing was identical to that described for plasma. These were first collected in a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube, and then the CSF nucleic acids were isolated using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA).
 
 \subsection{Library Preparation}
 
-Libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to the manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. It enables a limit of detection (LOD) down to 0.1\%, allowing the study of single-nucleotide variants (SNVs), short insertions and deletions (InDels), copy-number variations (CNVs), and fusions. Specifically, the subsequent steps have been followed to prepare the NGS libraries (\autoref{fig:library}):
+NGS libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to the manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. Additionally, it enables a limit of detection (LOD) down to 0.1\%, allowing the study of single-nucleotide variants (SNVs), short insertions and deletions (InDels), copy-number variations (CNVs), and fusions.
+
+The steps that have been followed to prepare the NGS libraries are described below:
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.85\textwidth]{Images/chapter_3/NGS_library.png}
-    \caption{Amplicon-based library preparation.}
-    \label{fig:library}
+    \begin{subfigure}{0.75\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_3/library_prep_1.png}
+        \caption{Incorporation of UMIs in two DNA fragments. This first PCR step assigns a random molecular barcode (UMI) to each of the DNA sequences, including gene-specific primers and a universal tag. \\}
+        \label{fig:Library_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/chapter_3/library_prep_2.png}
+        \caption{Amplification of the target amplicons. This second PCR uses custom primers to amplify the barcoded molecules with a universal tag sequence, adding patient-specific barcodes along with NGS-specific sequences.}
+        \label{fig:Library_2}
+    \end{subfigure}
+    \hfill
+    \caption{Schemes of the amplification and tagging technology used in in the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay. True hotspot variants can be distinguished from workflow errors by the frequency of variants in families that have the same UMI.}
+    \label{fig:Library}
 \end{figure}
 
 \begin{enumerate}[font=\bfseries]
-    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step.
-    \item \textbf{Target amplification}. After the fragmentation of the isolated DNA using enzymatic methods, PCR amplification of these targets produced labeled DNA amplicons within a specific size range.
-    \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, in this study, a specific reagent with magnetic beads was used to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from PCR fragments.
-    \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA. These adapters, among other functions, allow each sample to be marked with a specific nucleotide code, enabling the sequencer to analyze multiple patient samples simultaneously.
-    \item \textbf{Barcoded library purification}. To guarantee reliable sequencing results, and in a process similar to the previous one, a purification of the labeled amplicons was carried out.
+    \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step. Specifically, the reverse transcription of exosome RNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
+    \item \textbf{Target amplification}. After the fragmentation of the isolated and synthesized DNA using enzymatic methods, 2 cycles of tagging PCR were performed producing labeled DNA amplicons within a specific size range (\autoref{fig:Library_1}). In this sense, prior to target enrichment and library amplification, each original DNA molecule was assigned a random unique molecular identifier (UMI). This technology is aimed to detect, quantify, and sequence unique DNA fragments with high-resolution, allowing the identification and removal of amplification artifacts arising from library preparation. In addition, this ligated adapter also contains the first sample index and a universal tag.
+    \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, a specific reagent with magnetic beads was used in this study to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from the PCR reactions.
+    \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA, enabling the analysis of multiple samples simultaneously. Specifically, this second PCR (18 cycles) was performed to add patient-specific barcodes along with particular labels to create Ion Torrent\texttrademark{} sequencer-compatible libraries ((\autoref{fig:Library_2})).
+    \item \textbf{Barcoded library purification}. To guarantee reliable sequencing results, and in a process similar to the previous one, a purification of the barcoded amplicons was carried out.
     \item \textbf{Size selection}. To isolate the DNA fragment sizes of interest for efficient and high-quality DNA sequencing, magnetic beads with varying concentrations of buffers were used for size selection.
-    \item \textbf{Library quantification}. To estimate the DNA concentration and to ensure equal representation of the indexed libraries, each of the samples was quantified with a qPCR system and compared to the standard curve. Finally, the definitive barcoded libraries were pooled and adjusted to a final concentration of 50 $pM$.
+    \item \textbf{Library quantification}. To estimate the DNA concentration and to ensure equal representation of the indexed libraries, each of the samples was quantified with a qPCR system (40 cycles) and compared to the standard curve. Finally, the definitive barcoded libraries were pooled and adjusted to a final concentration of 50 $pM$.
 \end{enumerate}
 
 AMPure XP\textsuperscript\textregistered{} magnetic beads (Beckman Coulter, Inc., Brea, CA, USA) were used to carry out the purification and size selection steps, while the Ion Library TaqMan\texttrademark{} Quantitation Kit (Thermo Fisher, Palo Alto, CA, USA) and the StepOnePlus\texttrademark{} Real-Time PCR System (Thermo Fisher, Palo Alto, CA, USA) were used for the quantification.
@@ -192,6 +207,8 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
 \end{enumerate}
 
 \section{Algorithm Specifications and Requirements}
+
+%% parametros de muestras + thermo fisher guides
 
 %% GITHUB
 
