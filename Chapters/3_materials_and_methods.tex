@@ -52,7 +52,7 @@ The steps that have been followed to prepare the NGS libraries are described bel
     \item \textbf{Reverse transcription of cell-free nucleic acids}. After isolating the free-circulating DNA and exosome RNA, complementary DNA (cDNA) was synthesized in this step. Specifically, the reverse transcription of exosome RNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
     \item \textbf{Target amplification}. After the fragmentation of the isolated and synthesized DNA using enzymatic methods, 2 cycles of tagging PCR were performed producing labeled DNA amplicons within a specific size range (\autoref{fig:Library_1}). In this sense, prior to target enrichment and library amplification, each original DNA molecule was assigned a random unique molecular identifier (UMI). This technology is aimed to detect, quantify, and sequence unique DNA fragments with high-resolution, allowing the identification and removal of amplification artifacts arising from library preparation. In addition, this ligated adapter also contains the first sample index and a universal tag.
     \item \textbf{Target amplicons purification}. Sample purification is a critical step for obtaining accurate NGS data. Therefore, a specific reagent with magnetic beads was used in this study to remove short primers, unincorporated deoxyribonucleotide triphosphates (dNTPs), enzymes, short-failed PCR products, and salts from the PCR reactions.
-    \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA, enabling the analysis of multiple samples simultaneously. Specifically, this second PCR (18 cycles) was performed to add patient-specific barcodes along with particular labels to create Ion Torrent\texttrademark{} sequencer-compatible libraries ((\autoref{fig:Library_2})).
+    \item \textbf{Amplification of the target amplicons with barcode adapted primers}. In this step, specific DNA adapter sequences were annealed to the 5' and 3' ends of the amplicon DNA, enabling the analysis of multiple samples simultaneously. Specifically, this second PCR (18 cycles) was performed to add patient-specific barcodes along with particular labels to create Ion Torrent\texttrademark{} sequencer-compatible libraries (\autoref{fig:Library_2}).
     \item \textbf{Barcoded library purification}. To guarantee reliable sequencing results, and in a process similar to the previous one, a purification of the barcoded amplicons was carried out.
     \item \textbf{Size selection}. To isolate the DNA fragment sizes of interest for efficient and high-quality DNA sequencing, magnetic beads with varying concentrations of buffers were used for size selection.
     \item \textbf{Library quantification}. To estimate the DNA concentration and to ensure equal representation of the indexed libraries, each of the samples was quantified with a qPCR system (40 cycles) and compared to the standard curve. Finally, the definitive barcoded libraries were pooled and adjusted to a final concentration of 50 $pM$.
@@ -67,7 +67,7 @@ Template preparation is based on an emulsion PCR (ePCR) method (\autoref{fig:ePC
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/ePCR.png}
-    \caption{Ion Torrent\texttrademark{} NGS template preparation. Modified image from \cite{NGS}.}
+    \caption{Ion Torrent\texttrademark{} NGS template preparation technique. Micelle droplets are loaded with primers, complementary adapters, dNTPs and DNA polymerase. Then PCR is carried out within the micelle, covering each bead (100–200 million of beads) with thousands of copies of the same DNA sequence. Modified image from \cite{NGS}.}
     \label{fig:ePCR}
 \end{figure}
 
@@ -75,12 +75,12 @@ For both template preparation and chip loading, the Ion Chef\texttrademark{} Sys
 
 \subsection{Sequencing}
 
-The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA). It is a semiconductor-based NGS platform that decodes the template DNA sequence by detecting \ce{H^{+}} ions that are released upon the incorporation of nucleotides to the DNA fragment attached to its corresponding bead. 
+The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} S5 Sequencer (Thermo Fisher, Palo Alto, CA, USA). It is a semiconductor-based NGS platform that decodes the template DNA sequence by detecting \ce{H^{+}} ions that are released upon the incorporation of nucleotides to the DNA fragment attached to its bead. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter_3/NGS_sequencing.png}
-    \caption{Ion Torrent\texttrademark{} NGS sequencing: measurement of nucleotide addition. Modified image from \cite{NGS}.}
+    \caption{Ion Torrent\texttrademark{} NGS sequencing. Measurement of nucleotide addition: incorporation of an adenine (A) followed by the addition of two thymines (T). Modified image from \cite{NGS}.}
     \label{fig:NGS_sequencing}
 \end{figure}
 
