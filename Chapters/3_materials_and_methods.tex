@@ -151,7 +151,7 @@ After ensuring that the sequencing had been performed as expected, the resulting
     \item \textbf{Limit of Detection (LOD)}. Numeric range (\%) where the minimum represents the median value across all targets and the maximum represents the LOD for the $80^{th}$ percentile targets.
 \end{itemize}
 
-For sensitive variant detection down to 0.1\% frequency, optimal results are obtained when targeting a median read coverage $>$ 25000, median molecular coverage $>$ 2500, and both numbers of the LOD segment are $\le$ 0.1 \% \cite{Oncomine_PanCancer}.
+For sensitive variant detection down to 0.1\% frequency, optimal results are obtained when targeting a median read coverage $> 25000$, median molecular coverage $> 2500$, and both numbers of the LOD segment are $\le 0.1\%$ \cite{Oncomine_PanCancer}.
 
 Furthermore, with the Ion Reporter\texttrademark{} platform, it was possible to identify and analyze each of the deviations from a reference genome based on their biological and clinical relevance, obtaining information about the gene, the location, the allele frequency, and the specific type of each variant. The main parameters of interest for each of these mutations were:
 \begin{itemize}
@@ -159,7 +159,7 @@ Furthermore, with the Ion Reporter\texttrademark{} platform, it was possible to 
     \item \textbf{Molecular counts}. The number of detected DNA molecules containing a variant allele.
 \end{itemize}
 
-On the other hand, it is possible to download all this raw data in a $.tsv$ file, which includes an even more detailed analysis of all the variants. This file is precisely the one that was used to design the bioinformatic pipeline, along with the parameters described above.
+On the other hand, it is possible to download all this raw data in a \textit{.tsv} file, which includes an even more detailed analysis of all the variants. This file is precisely the one that was used to design the bioinformatic pipeline, along with the parameters described above.
 
 Finally, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently confirmed by dPCR.
 
@@ -225,7 +225,7 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
 
 The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
 
-The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the liquid biopsy samples used in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the obtained specifications described in \autoref{Secondary_analysis} and the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.10) and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the filters of the Ion Reporter\texttrademark{} platform, but are liable to be false-negatives.
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the liquid biopsy samples used in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the obtained specifications described in \autoref{Secondary_analysis} and the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.12) and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the filters of the Ion Reporter\texttrademark{} platform, but are liable to be false-negatives.
 
 This analysis and identification of the filtering parameters has been carried out with respect to each type of variant found during the study, including:
 \begin{itemize}
