@@ -223,17 +223,11 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
 
 \section{Algorithm Specifications and Requirements}
 
-%% parametros de muestras + thermo fisher guides
-%% citar cosas del secondary analysis, se tienen en cuenta esos datos
+The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
 
-% For reference calls, Molecular Depth provides measurable metric that serves as confirmation for variant absence among a large number of interrogated molecules.
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the liquid biopsy samples used in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the obtained specifications described in \autoref{Secondary_analysis} and the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.10) and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the filters of the Ion Reporter\texttrademark{} platform, but are liable to be false-negatives.
 
-
-%% GITHUB
-
-The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the biobank and the database of the Hospital Universitario Puerta de Hierro. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the NGS internal filter and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the NGS software but are liable to be false-negatives.
-
-This analysis and identification of the filtering parameters has been carried out with respect to each type of variants found during the study, including:
+This analysis and identification of the filtering parameters has been carried out with respect to each type of variant found during the study, including:
 \begin{itemize}
     \item Fusions.
     \item Copy-number variations (CNVs).
@@ -255,5 +249,3 @@ Regarding the technical requirements, the programming language used in this stud
 \end{itemize}
 
 Finally, to make programming more user-friendly through a graphical interface for \textsf{R}, the integrated development environment RStudio\textsuperscript\textregistered{} Desktop v1.2.5033 was used.
-
-Once the minimum requirements and specifications of the algorithm were established, and after the corresponding in vitro tests, a clinical study was carried out to test its functionalities in a real-world environment.
