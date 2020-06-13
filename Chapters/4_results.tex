@@ -60,21 +60,65 @@ Patients' clinicopathological information at the time of the liquid biopsies sam
 \label{tab:Patients}
 \end{table}
 
-Finally, it should be mentioned that in this study a subject was considered as two different patients if progression to a specific treatment was observed in that patient, that is if another sample was obtained and sequenced with the patient receiving different treatment than the initial one. On the other hand, patients with multiple sequenced samples but with the same treatment have been counted as a single one. In this context, this study had 27 unique individuals, 3 of them progressing to an ALK inhibitor.
+Finally, it should be mentioned that in this study a subject was considered as two different patients if progression to a specific treatment was observed in that patient, that is if another sample was obtained and sequenced with the patient receiving different treatment than the initial one. On the other hand, patients with multiple sequenced samples but with the same treatment were counted as a single one. In this context, this study had 27 unique individuals, 3 of them progressing to an ALK inhibitor.
 
 \section{Next Generation Sequencing Performance}
 
-% Todos estos resultados fueron utilizados posteriormente para establecer los parámetros del algoritmo implementado.
+The liquid biopsy samples from each of the patients were analyzed using NGS, which identified genetic mutations according to the wide range of hotspots in key genes addressed by the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay.
+
+For this study, 39 samples were sequenced using 9 different NGS runs. On average, the percentage of chip wells that contained an ISP was 85.0\%, resulting in 53.4\% of usable sequences (library ISPs that passed the polyclonal, low quality, and primer dimer filters). These called reads had an average length of 76.8 $bp$. The average of mapped reads per sample was about 9.1 million, while its mean sequencing depth was 25050 reads. Regarding the coverage uniformity, it was higher than 74.0\% in all the analyzed samples.
+
+Under these conditions, 53 mutations were identified after analyzing and manually filtering (as described in \autoref{sec:Secondary_analysis}) the variants obtained from the sequencer. As reflected in \autoref{fig:All_mutations}, the most widely represented mutations occurred in the TP53 gene, with 41 cases. In fact, it was common to find multiple alterations of this type in the same sample. ALK mutations, which are the target of this study, were identified in 8 samples. On the other hand, alterations were also detected in the PIK3CA, KRAS, and FGFR1 genes, appearing both individually and coexisting with the rest of the detected variants.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.88\textwidth]{Images/chapter_4/all_mutations.png}
+    \caption{Frequency of the mutations identified in the study population, as well as the the different types of missense mutations detected in the ALK gene.}
+    \label{fig:All_mutations}
+\end{figure}
+
+Finally, it should be noted that to optimize sequencing some runs also included liquid biopsies from external projects of the same nature to complete the 8 samples that fit in the sequencer.
+
+\section{Mutational Spectrum}
+
+% ALK white type
+
+% 7 pacientes no presentaban ninguna mutación
+% 1 paciente solo con ALK
+% 7 pacientes con ALK + TP53
+% 12 pacientes solo con TP53
+% 1 paciente con PIK3CA + TP53
+% 1 paciente PIK3CA
+% 1 paciente con FGFR1 + KRAS + TP53 > no va a haber alk aquí
+ 
+% ALK: 8 missenses
+% FGFR1: 1 indel
+% KRAS: 1 messense
+% PIK3CA: 2 missenses
+% TP53: 
+%     2 indels
+%     8 missenses
+%     11 multiple mutations
+%         22 missenses
+%         9 indels
 
 % CCLM
-% For NGS analysis, the median cfDNA input amount per sample was 14.7 ng. Notably, using samples from daily routine, we failed to isolate cfDNA at 1.55 ng/μL in 34 cases (65.4% of cohort), and therefore the final input was below 20 ng (input amount recommended by the manu- facturer). However, a somatic mutation could be detected in 24 (70.6%) of these cases.
-%On average, the chip density was 93.7%, resulting in 13.1 million average reads per run. The average mapped reads per sample was 1.4 million, resulting in a median overall sequencing depth of 28,090. The median read cov- erage and median molecular coverage per sample were 27,327 and 2519, respectively. In such a scenario, we were able to detect at least one somatic mutation in 36 of the 52 patients included (69.2%). No mutations were detected in the healthy donor samples.
-% A total of 61 mutations were accounted in the diseased population with an average of 1.2 mutations per patient and a median MAF of 0.64%. Most mutations identified were single-nucleotide polymorphisms (n = 49). We also detected deletions (n = 11) and one insertion (Supplemen- tary Table 3).
+%In such a scenario, we were able to detect at least one somatic mutation in 36 of the 52 patients included (69.2%). No mutations were detected in the healthy donor samples. A total of 61 mutations were accounted in the diseased population with an average of 1.2 mutations per patient and a median MAF of 0.64%. Most mutations identified were single-nucleotide polymorphisms (n = 49). We also detected deletions (n = 11) and one insertion (Supplemen- tary Table 3).
 %Among samples without any mutations detected (n = 16), six corresponded to patients having stage III disease and the other 10 corresponded to patients having stage IV. No significant differences in sample concentra- tion were observed between samples with positive and negative sequencing results (p = 0.949).
 % Using this panel, we detected mutations in eight of the 11 (72.7%) testable genes, with EGFR and TP53 being the most frequently mutated genes. In this way, 38.5% of patients (n = 20) had a mutation in EGFR while 32.7% of patients (n = 17) had mutations in TP53 (Figure 1). Interestingly, the resistance mutation to ALK inhibitors, p.G1269A in the kinase domain of ALK, was found in two ALK-positive NSCLC patients who had progressed on cri- zotinib (Figure 2). Additionally, the resistance mutation p.T790M was detected by NGS in 12 patients in which plasma sample was obtained at first disease progression. Noteworthy, only two of these patients had re-biopsy available for p.T790M testing, and in both cases p.T790M was also detected in the tissue sample.
 
 % CCLM
 % The average number of mutations per sample, according to NGS analysis, was also higher in stage IV patients compared with non-metastatic patients, although this observation was not statistically significant (data not shown). Importantly, the number of mutations per sample was not dependent on cfDNA concentration.
+
+
+% cclm
+% ctDNA collected at the time of disease progression was available from seven patients for NGS analysis. In this subset of patients, PIK3CA mutations were the alterations most frequently detected upon disease progression, being found in four patients. 
+
+% NSCLC_alterations
+% Furthermore, tumours bearing co-mutations in TP53 exhibit higher degrees of copy number genomic instabi- lity (aneuploidy) and a higher somatic mutation burden, both on the trunk and in the branches of the tumour phylogenetic tree104. Therefore, TP53 co-mutations impact the natural history of EGFR-mutant NSCLC at least partially by allowing tolerance of a greater degree of genomic instability, which results in both larger num- bers of co-occurring truncal drivers and late subclonal diversification with focal emergence of high-amplitude amplifications and deletions in mediators of therapeutic resistance104. In keeping with a more complex genomic landscape and a larger burden of clonal or subclonal co-drivers, multiple clinical studies have identified TP53 co-alterations as a negative prognostic marker in EGFR-mutant LUAD and a consistent predictor of worse clinical outcomes following EGFR TKI therapy
+
+% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6225899/
+% In ALK-rearranged NSCLC co-occurring TP53 mutations predict an unfavorable outcome of systemic therapy.
 
 \section{Concordance between NGS and dPCR}
 
@@ -84,16 +128,7 @@ Finally, it should be mentioned that in this study a subject was considered as t
 % Both Lin’s concordance correlation coefficient and Pearson’s correlation coefficient between MAFs obtained by NGS and dPCR revealed a positive and linear relation- ship between two sets of data (ρc = 0.986; 95% CI = 0.975– 0.991 and r = 0.987; p < 0.0001, respectively).
 % Passing-Bablok regression analysis of the methods resulted in a regression equation y = 0.068 (95% CI = −0.017 to 0.152) + 0.893 (95% CI = 0.810–0.973) x, showing an excellent concordance between both methodologies (Figure 4A). The Cusum test for linearity indicated no significant deviation from linearity (p > 0.10). The Bland- Altman plot of the same data set (Figure 4B) showed little bias between the two methods (bias = −0.59; 95% limits of agreement −6.06 to 4.87) with only three meas- urements (close to LOD) being outside the CI. Similarly, when restricting the analysis to samples with a final input amount of cfDNA greater than or equal to 10 ng (n = 35), Lin’s concordance correlation coefficient (ρc = 0.995; 95% CI = 0.990–0.997) and Pearson’s correlation coefficient (r = 0.996; p < 0.0001) showed an almost perfect concord- ance between the MAFs obtained by each technology. Likewise, under these conditions, the Passing-Bablok regression equation was y = 0.079 (−0.023 to 0.173) + 0.883 (0.758–1.012) x. The Bland-Altman plot showed the same bias between the two methods that the previous situation showed (bias = −0.59) with more restrictive 95% limits of agreement (−3.98 to 2.80). Only two measurements were outside the CI. These results corroborated an almost perfect agreement between both methodologies when the cfDNA input was at least 10 ng.
 
-\section{Spectrum and Significance of Mutations}
-
-
-% NSCLC_alterations
-% Furthermore, tumours bearing co-mutations in TP53 exhibit higher degrees of copy number genomic instabi- lity (aneuploidy) and a higher somatic mutation burden, both on the trunk and in the branches of the tumour phylogenetic tree104. Therefore, TP53 co-mutations impact the natural history of EGFR-mutant NSCLC at least partially by allowing tolerance of a greater degree of genomic instability, which results in both larger num- bers of co-occurring truncal drivers and late subclonal diversification with focal emergence of high-amplitude amplifications and deletions in mediators of therapeutic resistance104. In keeping with a more complex genomic landscape and a larger burden of clonal or subclonal co-drivers, multiple clinical studies have identified TP53 co-alterations as a negative prognostic marker in EGFR-mutant LUAD and a consistent predictor of worse clinical outcomes following EGFR TKI therapy
-
-% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6225899/
-% In ALK-rearranged NSCLC co-occurring TP53 mutations predict an unfavorable outcome of systemic therapy.
-
-
+% Todos estos resultados fueron utilizados posteriormente para establecer los parámetros del algoritmo implementado.
 
 
 \section{dPCR}
@@ -109,35 +144,13 @@ Finally, it should be mentioned that in this study a subject was considered as t
 % De acuerdo con los estudios de Anatomía Patológica, 26 pacientes portaban mutaciones somáticas detectables mediante PCR digital: 17 pacientes con cáncer de pulmón presentaban mutaciones activadoras en el gen EGFR, y 9 pacientes con cáncer de colon presentaban mutaciones en el gen KRAS. De estos 26 pacientes, se detectaron mutaciones mediante PCR digital en 38 muestras pareadas procedentes de 19 muestras de plasma (73,1%). Según la Historia Clínica, los 7 pacientes que resultaron negativos para el estudio mediante PCR digital presentaban una respuesta parcial o completa al tratamiento según los criterios RECIST v1.1.
 % De las 38 muestras positivas por PCR digital, 30 fueron extraídas mediante MR y MPC. La fracción alélica (MAF) y su intervalo de confianza se representan en la tabla 16. La media de la fracción alélica obtenida por ambas metodologías no mostró diferencias significativas (p=0,865). Estos datos sugieren un bajo impacto del método de extracción en el resultado del análisis de mutaciones.
 
-
-
-\section{Statistic Analysis}
-
-% Análisis estadístico
-% Los resultados de frecuencia se expresarán en términos absolutos, en porcentajes e intervalos de confianza y, las variables cuantitativas como media ± desviación estándar o mediana (rango) según proceda.
-% Para evaluar la concordancia del status de la translocación (positivo/negativo) entre las muestras de sangre (plaquetas y plasma) pre-tratamiento y el tejido se empleará el coeficiente Kappa de Cohen y su intervalo de confianza. Además, se analizará la sensibilidad, especificidad, valor predictivo positivo y valor predictivo negativo de la detección de la translocación en plasma (exosomas) y plaquetas, tomando como gold standar el resultado del tejido.
-% Para analizar los datos de supervivencia de los pacientes se tomará como fecha de inicio, la fecha de inicio al tratamiento en primera línea y se recabarán los datos de: fecha de progresión, de muerte o fecha de última visita al oncólogo. La supervivencia libre de progresión se calculará desde la fecha de inicio al tratamiento en primera línea. Para el análisis de PFS y SG se usará el método de Kaplan-Meier y como estadístico de contraste se usará el Log- Rank. Los valores de los HR obtenidos serán ajustados por las variables clínico-patologícas pertinentes.
-%Las pruebas con un valor de p <0.05 serán consideradas estadísticamente significativas.
-
-
-
-\section{Utility}
-
-% A key benefit for physicians is the serial use of digital PCR to monitor one or more driver mutations throughout treatment to determine response and recurrence since the level of mutated DNA found in liquid biopsies has been found to reflect the size of the tumor(s). It is also possible to use NGS to track progress; however, in these cases it is less practical due to cost and longer turnaround time.
-
-
-
-
-
-
-
 \section{Implemented Pipeline}
 
 The development of the bioinformatic pipeline was divided into two steps: the implementation of the filtering algorithm itself; and that of a graphical interface to simplify the process of selecting parameters and saving the output variants along with their properties in a \textit{.csv} file.
 
 \subsection{Algorithm Characterization}
 
-In order to detect all variants at the ALK gene locus, specific conditions for each of them have been established from a set of previously validated samples. The flowchart in \autoref{fig:Algorithm} shows the basic structure of the developed pipeline and the selection criteria based on certain variables as presented in the \textit{non-filtered-oncomine.tsv} file.
+In order to detect all variants at the ALK gene locus, specific conditions for each of them were established from a set of previously validated samples. The flowchart in \autoref{fig:Algorithm} shows the basic structure of the developed pipeline and the selection criteria based on certain variables as presented in the \textit{non-filtered-oncomine.tsv} file.
 
 \begin{figure}[ht]
     \centering
@@ -148,7 +161,7 @@ In order to detect all variants at the ALK gene locus, specific conditions for e
 
 \subsubsection{Fusions Filtering}
 
-The fusions filter selects translocations at the ALK locus with molecular coverage $> 2$, and fusion reads $> 25$. These thresholds have been established according to the clinical study data and the Oncomine\texttrademark{} Pan‐Cancer Cell‐Free Assay recommendations.
+The fusions filter selects translocations at the ALK locus with molecular coverage $> 2$, and fusion reads $> 25$. These thresholds were established according to the clinical study data and the Oncomine\texttrademark{} Pan‐Cancer Cell‐Free Assay recommendations.
 
 Additionally, two control genes were included in each sequencing process to measure the transcript abundance, TATA-binding protein (TBP) and hydroxymethylbilane synthase (HMBS). Both must have molecular coverage $> 2$ to validate the filtered fusion variants by ensuring their correct amplification.
 
@@ -180,11 +193,11 @@ The sequencing results usually present doubtful data regarding InDels. Therefore
 
 Based on data from confirmed ALK-positive samples, false positives are highly likely in MNPs. In this context, only variants that have been detected in at least 50 molecular counts with $\ge 200$ reads and an AF $\ge 0.03$ were considered for confirmation by dPCR. 
 
-On the other hand, abnormal Ion GeneStudio\texttrademark{} S5 Sequencer behavior at position chr2:29443611 of the ALK locus and involving the reading of 6 consecutive guanines (G) has been observed. Thus, variants at that location were excluded from further analysis.
+On the other hand, abnormal Ion GeneStudio\texttrademark{} S5 Sequencer behavior at position chr2:29443611 of the ALK locus and involving the reading of 6 consecutive guanines (G) was observed. Thus, variants at that location were excluded from further analysis.
 
 \subsection{Graphical User Interface (GUI)}
 
-The implemented user interface has been developed to facilitate data input and interpretation of results. The different layouts are shown in \autoref{fig:GUI}.
+The implemented user interface were developed to facilitate data input and interpretation of results. The different layouts are shown in \autoref{fig:GUI}.
 
 \begin{figure}[ht]
     \centering
@@ -219,3 +232,9 @@ The start screen (\autoref{fig:GUI_1}) has several options that allow some varia
 Finally, to fully characterize the variants that have passed a particular filter, the results are displayed specifying the mutation type, the row number of the variants in the \textit{non-filtered-oncomine.tsv} file, and the identifier of the alternate allele (\autoref{fig:GUI_3}). Simultaneously, each of the identified variants is appended to the $.csv$ output file along with its main characteristics.
 
 It should also be noted that several additional screens have been implemented to offer the end-user information on the progress of the filtering process, on any errors that may have occurred during it, and on the non-identification of any variant of interest by the algorithm.
+
+\section{Utility}
+
+% A key benefit for physicians is the serial use of digital PCR to monitor one or more driver mutations throughout treatment to determine response and recurrence since the level of mutated DNA found in liquid biopsies has been found to reflect the size of the tumor(s). It is also possible to use NGS to track progress; however, in these cases it is less practical due to cost and longer turnaround time.
+
+

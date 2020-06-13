@@ -12,11 +12,11 @@ Finally, for this project, a total of 39 liquid biopsies (37 plasma samples and 
 
 \section{Laboratory Procedures}
 
-In order to identify the required parameters to design and implement the automatic algorithm for filtering genetic variants, several clinical procedures have been carried out, including the collection and conditioning of the ALK-positive NSCLC samples, their sequencing and analysis, and the subsequent confirmation of the identified mutations.
+In order to identify the required parameters to design and implement the automatic algorithm for filtering genetic variants, several clinical procedures were carried out, including the collection and conditioning of the ALK-positive NSCLC samples, their sequencing and analysis, and the subsequent confirmation of the identified mutations.
 
 \subsection{Sample Collection and Processing}
 
-Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is drawn into a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its processing. Within the context of the aforementioned project, blood samples have been extracted from patients in the pre-treatment stage, at months 2, 4, 6, 8, 12, 15 and 18, and at progression.
+Once an ALK gene mutation is diagnosed in a patient with NSCLC according to an anatomic pathology report (FISH and\slash or IHC), peripheral blood is drawn into a 9 $mL$ Streck Cell-Free DNA BCT\textsuperscript\textregistered{} (Streck, La Vista, NE, USA) tube and transported to the Liquid Biopsy Laboratory, where it is preserved until its processing. Within the context of the aforementioned project, blood samples were extracted from patients in the pre-treatment stage, at months 2, 4, 6, 8, 12, 15 and 18, and at progression.
 
 In this study, isolation of cfDNA and exosomes from the cellular fraction was achieved by two consecutive centrifugation processes at room temperature, the first at 1500 $g$ for 10 $min$ and the second at 5000 $g$ for 20 $min$. After discarding the supernatant containing the clean plasma, the last step of the cfDNA and exosome RNA isolation was performed using the QIAamp\textsuperscript\textregistered{} Circulating Nucleic Acid Kit (QIAgen, Valencia, CA, USA) and the exoRNeasy\textsuperscript\textregistered{} Serum/Plasma Maxi Kit (QIAgen, Valencia, CA, USA) respectively, following the manufacturer's instructions. Until library preparation for sequencing, processed samples were stored at $-80$ \textdegree{C}.
 
@@ -26,7 +26,7 @@ Regarding CSF samples, their processing was identical to that described for plas
 
 NGS libraries were prepared from 10.4 $\mu L$ of cfDNA or exosome RNA using the Oncomine\texttrademark{} Pan-Cancer Cell-Free Assay (Thermo Fisher, Palo Alto, CA, USA) according to the manufacturer's instructions. This multi-biomarker amplicon-based assay is optimized to detect more than 900 hotspots in 52 key genes from liquid biopsy samples containing tumor-derived DNA and RNA. Additionally, it enables a limit of detection (LOD) down to 0.1\%, allowing the study of single-nucleotide variants (SNVs), short insertions and deletions (InDels), copy-number variations (CNVs), and fusions.
 
-The steps that have been followed to prepare the NGS libraries are described below:
+The steps that were followed to prepare the NGS libraries are described below:
 
 \begin{figure}[ht]
     \centering
@@ -86,7 +86,7 @@ The previously loaded chips were sequenced on an Ion GeneStudio\texttrademark{} 
 
 This process occurs simultaneously in millions of wells, which contain template-attached beads incubated with DNA polymerase and a particular type of dNTP. Therefore, if that specific dNTP matches the growing template strand, the DNA polymerase adds it, resulting in a discharge of a \ce{H^{+}} ion that will change the pH of the solution in the well. This shift is recorded and converted to voltage, indicating that the nucleotide was incorporated and the base was called (\autoref{fig:NGS_sequencing}).
 
-\subsection{Sequenced Data Analysis}
+\subsection{Sequenced Data Analysis} \label{sec:Data_analysis}
 
 Data analysis was completed in two consecutive steps. First, a primary analysis was performed to study the overall quality of the sequenced data. Subsequently, the identified genetic variants were analyzed and verified using several software tools. In this last step, data of interest was also collected for the development of the algorithm.
 
@@ -94,7 +94,7 @@ Data analysis was completed in two consecutive steps. First, a primary analysis 
 
 The sequencing runs were scheduled with the Torrent Suite\texttrademark{} v5.12 software, generating at the end of the process a file with the main quality specifications (\autoref{fig:20200108_1}), which include:
 \begin{itemize}
-    \item \textbf{ISP loading density}. Percentage of chip wells that contain an Ion Sphere\texttrademark{} Particle.
+    \item \textbf{ISP loading density}. Percentage of chip wells that contain an Ion Sphere\texttrademark{} Particle (ISP).
     \item \textbf{Total reads}. The total number of reads associated with a specific barcode.
     \item \textbf{Read length ($\boldsymbol{bp}$)}. Length of the called reads.
 \end{itemize}
@@ -142,7 +142,7 @@ This raw data was processed automatically on the Torrent Server\texttrademark{} 
     \label{fig:20200108_4}
 \end{figure}
 
-\subsubsection{Secondary Analysis} \label{Secondary_analysis}
+\subsubsection{Secondary Analysis} \label{sec:Secondary_analysis}
 
 After ensuring that the sequencing had been performed as expected, the resulting data of the quality control passing samples were uploaded in BAM format to the Ion Reporter\texttrademark{} v5.12. Variant calling, annotation, and filtering were performed on this platform using the Oncomine\texttrademark{} TagSeq Pan-Cancer Liquid Biopsy v2.1 workflow, including this pipeline analysis the mapping of the sequenced reads to defined target regions (Oncomine\texttrademark{} Pan-Cancer DNA Regions v$1.0$) and the variant calling using the Oncomine\texttrademark{} Variant Annotator v2.3 plugin. For each of the samples the following parameters were obtained:
 \begin{itemize}
@@ -165,7 +165,7 @@ Finally, all candidate mutations were manually reviewed using the Integrative Ge
 
 \subsection{Confirmation of the Sequenced Results}
 
-Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations (\autoref{Secondary_analysis}) in the cfDNA or cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
+Digital PCR is a tool that is used to improve the efficiency of the NGS workflow and for the verification of sequencing data. In this study, the previously identified mutations (\autoref{sec:Secondary_analysis}) in the cfDNA or cDNA samples were confirmed by the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA) according to the manufacturer's specifications. The reverse transcription of exosome RNA to synthesize cDNA was performed using the PrimeScript\texttrademark{} RT Reagent Kit (TaKaRa, Japan).
 
 Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the augmented target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
 \begin{enumerate}[font=\bfseries]
@@ -223,11 +223,11 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
 
 \section{Algorithm Specifications and Requirements}
 
-The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
+The main objective of the developed algorithm is to fully automate the mutation filtering that is carried out before its ultimate confirmation by dPCR. In this way, this solution aims to simplify and automate the analysis of the NGS data described in \autoref{sec:Secondary_analysis}. Eventually, this will save time, remove the human factor, and therefore improve the quality and efficiency of the entire process.
 
-The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the liquid biopsy samples used in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the obtained specifications described in \autoref{Secondary_analysis} and the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.12) and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the filters of the Ion Reporter\texttrademark{} platform, but are liable to be false-negatives.
+The different parameters of the proposed algorithm were identified according to the confirmed variants, both positive and negative, obtained from the liquid biopsy samples used in this study. To find specific patterns, each type of these clinically relevant deviations from a reference genome were studied individually using the obtained specifications described in \autoref{sec:Secondary_analysis} and the \textit{non-filtered-oncomine.tsv} output file, which is generated after each sequencing. It contains both variants that have passed the Ion Reporter\texttrademark{} internal filter (Oncomine\texttrademark{} Variants v5.12) and initially discarded mutations. Therefore, apart from discerning whether a reading of an allele fraction represents a true mutation or is an artifact that should be ignored, the developed algorithm in this study will also be able to identify samples that have been initially discarded by the filters of the Ion Reporter\texttrademark{} platform, but are liable to be false-negatives.
 
-This analysis and identification of the filtering parameters has been carried out with respect to each type of variant found during the study, including:
+This analysis and identification of the filtering parameters was carried out with respect to each type of variant found during the study, including:
 \begin{itemize}
     \item Fusions.
     \item Copy-number variations (CNVs).
@@ -236,7 +236,7 @@ This analysis and identification of the filtering parameters has been carried ou
     \item Multiple-nucleotide polymorphisms (MNPs).
 \end{itemize}
 
-For each of them, minimum standards have been established to consider them valid and proceed with their confirmation by dPCR. Specifically, parameters such as the overall error of the NGS assay, the limit of detection (LOD), the coverage depth, the percentage of targeted bases sequenced at that coverage depth, the total number of target reads covering a variant region, the number of reads supporting a specific variant, and the clinical significance, among others, have been taken into account for the selection of the different thresholds.
+For each of them, minimum standards were established to consider them valid and proceed with their confirmation by dPCR. Specifically, parameters such as the overall error of the NGS assay, the limit of detection (LOD), the coverage depth, the percentage of targeted bases sequenced at that coverage depth, the total number of target reads covering a variant region, the number of reads supporting a specific variant, and the clinical significance, among others, were taken into account for the selection of the different thresholds.
 
 Regarding the technical requirements, the programming language used in this study was \textsf{R} (v3.6.3), a free software environment for statistical computing and graphics. Furthermore, its capabilities were extended through additional packages:
 \begin{itemize}
