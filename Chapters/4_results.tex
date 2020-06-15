@@ -12,7 +12,7 @@ Patients' clinicopathological information at the time of the liquid biopsies sam
 \renewcommand{\arraystretch}{1.25}
 \begin{tabular}{cccc}
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Clinical feature} & \textbf{Grouping}  & \textbf{N} & \textbf{\%} \\
+\textbf{Clinical Feature} & \textbf{Grouping}  & \textbf{N} & \textbf{\%} \\
 \rowcolor[HTML]{FFFFFF}
 \textbf{Age of diagnosis} & Median & 54 & - \\
 \rowcolor[HTML]{EFEFEF}
@@ -70,81 +70,135 @@ For this study, 39 samples were sequenced using 9 different NGS runs. On average
 
 Under these conditions, more than 170 potentially malignant mutations in genes such as ALK, EGFR, KRAS, TP53, PIK3CA, FGFR1, or PDGFRA, among others, were initially accounted. From this set, 84 of the alterations involved the ALK gene. Each of these possible mutations was manually filtered as described in \autoref{sec:Secondary_analysis}. As a result of this assessment, 67.9\% of the initial ALK variants were excluded from further analysis. In this context, 27 potential ALK alterations were finally identified from 18 different samples (17 patients), which were subsequently verified by digital PCR.
 
-On the other hand, taking into account the clinical interest of pathological mutations, 7 additional samples from 6 different patients were also confirmed by dPCR since their characteristics (molecular coverage, read counts, etc.) made them susceptible to being positive. These samples included mutations in the EGFR, KRAS, TP53, and PIK3CA genes.
+On the other hand, taking into account the clinical interest of pathological mutations, 7 additional samples associated with 12 potential alterations from 6 different patients were also confirmed by dPCR since their characteristics (molecular coverage, read counts, etc.) made them susceptible to being positive. These samples included mutations in the EGFR, KRAS, TP53, and PIK3CA genes.
 
 Finally, it should be noted that all the selected samples had a MAF above the limit of detection (0.1\%).
 
 \section{Mutational Spectrum}
 
-% Additionally, highly represented mutations without a clear pathological influence and confirmed by the secondary analysis carried out in \autoref{sec:Secondary_analysis} have also been included in the final results.
+Among the 39 potential mutations identified from 25 samples, only 14 alterations (35.9\%) were finally confirmed as positive by dPCR. 9 of them were ALK variants, of which 8 were unique identifications associated with a specific patient. The remaining ALK mutation was confirmed in two different samples from the same patient. Regarding the other 5 mutations, 2 were found in the TP53 gene, 2 in PIK3CA, and 1 in KRAS.
 
-% decir que se han confirmado por igv algunas mutaciones 
+On the other hand, and having given priority to the confirmation of ALK mutations by dPCR, 40 highly represented alterations reported by NGS were also reaffirmed by the secondary analysis described in \autoref{sec:Secondary_analysis} and included in the final mutational spectrum. Of these, 39 were in the TP53 gene (only on one occasion the same variant was identified in two different samples from the same patient) and 1 in FGFR1.
 
-% ALK white type 22
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/chapter_4/all_mutations.png}
+    \caption{Frequency of the mutations identified in the study population, as well as the different types of ALK missense mutations.}
+    \label{fig:All_mutations}
+\end{figure}
 
-% 7 pacientes no presentaban ninguna mutación
-% 1 paciente solo con ALK
-% 7 pacientes con ALK + TP53
-% 12 pacientes solo con TP53
-% 1 paciente con PIK3CA + TP53
-% 1 paciente PIK3CA
-% 1 paciente con FGFR1 + KRAS + TP53 > no va a haber alk aquí
- 
-% ALK: 8 missenses
-% FGFR1: 1 indel
-% KRAS: 1 messense
-% PIK3CA: 2 missenses
-% TP53: 
-%     2 indels
-%     8 missenses
-%     11 multiple mutations
-%         22 missenses
-%         9 indels
+In this context, 52 unique mutations were finally reported. As shown in \autoref{fig:All_mutations}, the most widely represented mutations occurred in the TP53 gene, with 40 cases. It was common to find multiple alterations of this type in the same sample and coexisting with ALK mutations, which are the target of this study. On the other hand, alterations were also detected in the PIK3CA, KRAS, and FGFR1 genes, appearing both individually and concurring with the rest of the detected variants. These mutations are found in more detail in \autoref{tab:TP53_Mutations}.
 
-% Paper nuevo
-% Overall, somatic variants in ctDNA were detected in 24  patients. There were no significant differences in cfDNA input between patients in whom a somatic mutation was detected in the cfDNA and those in whom it was not (n=2).  The average number of mutations per patient was 4.1 and median MAF was XX%. As expected, the most frequent mutation type was single-nucleotide polymorphisms (SNVs) (n = 97).  In addition, we identified 7 indels and three CNVs (Figure 1). Specifically a c-MYC gain along with a CCND1 and a FGFR3 loss were detected in the same patient.  Using this Pan-Cancer Cell-Free Assay, somatic mutations were detected in 10 genes. TP53 was the most frequently mutated gene, followed by FGFR2, GNAQ, IDH1, ALK and CCND3. A complete list of all variants detected is available in Supplemental table 2. 
+\begin{table}[t]
+\centering
+\resizebox{0.52\textwidth}{!}{
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{cccc}
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Gene}                                             & \textbf{\begin{tabular}[c]{@{}c@{}}Genomic\\ Alteration\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Nucleotide\\ Change\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Number of\\ Cases\end{tabular}} \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.P92A & c.274C\textgreater{}G & 13 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.A88fs & c.261\_262insC & 4 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.R282W & c.844C\textgreater{}T & 3 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.V197fs & c.590delT & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.M133T & c.398T\textgreater{}C & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.H380fs & c.1140delT & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.P359A & c.1075C\textgreater{}G & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.R248Q & c.743G\textgreater{}A & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.Y220C & c.659A\textgreater{}G & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.S90fs & c.267\_268insC & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.G105C & c.313G\textgreater{}T & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.S15* & c.42\_43insT & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.S149fs & c.445delT & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.Q16fs & c.45delT & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.V157F & c.469G\textgreater{}T & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.R158C & c.472C\textgreater{}T & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.M160I & c.480G\textgreater{}T & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.C176Y & c.527G\textgreater{}A & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.S241A & c.721T\textgreater{}G & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.P250L & c.749C\textgreater{}T & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\cellcolor[HTML]{FFFFFF} & p.G262R & c.784insC & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{FFFFFF} & p.R273Gly & c.817C\textgreater{}G & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\multirow{-23}{*}{\cellcolor[HTML]{FFFFFF}\textbf{TP53}}  & p.? & c.919+10C\textgreater{}T & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF} & p.E545K & c.1633G\textgreater{}A & 1 \\
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{PIK3CA}} & p.E545A & c.1634A\textgreater{}C & 1 \\
+\rowcolor[HTML]{FFFFFF} 
+\textbf{KRAS} & p.G12C & c.34G\textgreater{}T & 1 \\
+\rowcolor[HTML]{EFEFEF}
+\textbf{FGFR1} & p.T174fs & 520delA & 1
+\end{tabular}}
+\caption{TP53, PIK3CA, KRAS, and FGFR1 gene mutations identified in the study population and their prevalence.}
+\label{tab:TP53_Mutations}
+\end{table}
 
+The average number of variants per patient was 1.7. However, 7 patients did not present any mutation and in 22 of them, no ALK alteration was found. Furthermore, there were no significant differences in the amount of cfDNA input between patients with and without an associated mutation. In this sense, only 1 subject had a single ALK mutation, while the remaining 7 patients had it coexisting with alterations in the TP53 gene.
 
-% cclm
-% ctDNA collected at the time of disease progression was available from seven patients for NGS analysis. In this subset of patients, PIK3CA mutations were the alterations most frequently detected upon disease progression, being found in four patients. 
+The ALK rearrangements confirmed by dPCR are represented in \autoref{tab:ALK_dPCR}. As can also be seen in \autoref{fig:All_mutations}, the most prevalent mutation was G1202R, identified in 4 different patients who had progressed on alectinib (N$=$3) and ceritinib (N$=$1). The G1123C mutation (N$=$1) also arose as a result of the failure of a second-generation inhibitor. The remaining G1269A (N$=$2) and A1200V (N$=$1) alterations were detected upon progression to crizotinib. Overall, practically all these mutations were identified in patients with stage IV NSCLC (87.5\%), except for the G1123C variant, which was carried by a subject with stage IIIB. Furthermore, these mutations were detected at a median MAF of 0.4\%.
 
-% CCLM
-% Among the total 61 mutations detected by the OncomineTM Lung cfDNA Assay kit, we were able to perform 54 confirmations by dPCR (88.5%) using both custom TaqMan® assays and predesigned TaqMan® assays.
-% Altogether, 34 out of 36 patients with an NGS-positive result were deemed evaluable for confirmation analysis between NGS and dPCR. This cohort had a total of 54 mutations detected by NGS. Of these, 49 were also detected by dPCR (89%).
-%Five mutations were reported exclusively by NGS, which corresponded to samples in which mutations were detected at MAF close to NGS and dPCR LOD (MAF ≤ 0.1%)...
+\begin{table}[ht]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ccccc}
+\rowcolor[HTML]{C0C0C0} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Patient\\ ID\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Nucleotide\\ Change\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Amino Acid\\ Change\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Progression\\ to\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}MAF\\ (dPCR)\end{tabular}} \\
+\rowcolor[HTML]{FFFFFF} 
+ARS\_1 & p.G1269A & c.3806G\textgreater{}C & Crizotinib & 0.42\% \\
+\rowcolor[HTML]{EFEFEF} 
+ARS\_2 & p.G1202R & c.3604G\textgreater{}A & Ceritinib & 2.12\% \\
+\rowcolor[HTML]{FFFFFF}
+AHT & p.A1200V & c.3599C\textgreater{}T & Crizotinib & - \\
+\rowcolor[HTML]{EFEFEF}
+AMLO & p.G1269A & c.3806G\textgreater{}C & Crizotinib & 2.80\% \\
+\rowcolor[HTML]{FFFFFF} 
+GCP & p.G1123C & c.3367G\textgreater{}T & Alectinib & - \\
+\rowcolor[HTML]{EFEFEF} 
+MCPA & p.G1202R & c.3604G\textgreater{}A & Alectinib & 0.40\% \\
+\rowcolor[HTML]{FFFFFF} 
+MESR & p.G1202R & c.3604G\textgreater{}A & Alectinib & 0.30\% \\
+\rowcolor[HTML]{EFEFEF} 
+MSCS & p.G1202R & c.3604G\textgreater{}A & Alectinib & 0.01\% 
+\end{tabular}}
+\caption{Characteristics of the ALK mutations identified in this study.}
+\label{tab:ALK_dPCR}
+\end{table}
 
-% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5039376/
-% The MAFs were all higher than the LOD of the ddPCR platform, therefore ruling out the possibility of false positive
-% Mutant allele concentration (copies/µl, CMUT) and wild-type allele concentration (copies/µl, CWT) were calculated and mutant allele frequency (MAF) was calculated as: MAF = CMUT/(CMUT + CWT).
+On the other hand, in 12 patients only TP53 mutations could be confirmed, in 1 individual concurrence of alterations in PIK3CA and TP53 was found, in another only 1 variant of PIK3CA was detected, and the last patient had mutations in the FGFR1, KRAS, and TP53 genes.
 
-% https://books.google.es/books?id=gijVCwAAQBAJ&pg=PT745&lpg=PT745&dq=maf+dpcr&source=bl&ots=UEBSZFWsnN&sig=ACfU3U3uL_R6J0ew8rOUbOAJqao0Y8e0kg&hl=es&sa=X&ved=2ahUKEwi2-fiJ5PvpAhVP6RoKHekZD_QQ6AEwAHoECAoQAQ#v=onepage&q&f=false
-% Mutations could be robustly detected in plasma samples using dPCR with a sensitivity as low as 0.1% and a sensitivity of 0.5% using NGS. All mutations previously identified using NGS were validated using dPCR in tumor (n=27) as well as in plasma samples (n=5).
-%Moreover, dPCR identified 4 additional mutations in 4 plasma samples in the neoadjuvant setting and 4 in the metastatic setting, 2 in tumor and 2 in plasma samples. The mutant allelic frequencies (MAF) of these newly identified mutations were very low (range 0.2%-1.8%) close to the detection limit of the technology. Through the use of dPCR, the detection rate of plasma ctDNA increased from 8% using NGS to 38% in the neoadjuvant setting and from 67% using NGS to 100% in the metastatic setting thereby highlighting the greater sensitivity of the dPCR technology.
-% The MAF assessed by NGS and dPCR were highly correlated both in the neoadjuvant and metastatic (Spearman p=0.84 and p=0.97) settings, a higher concordance between NGS and dPCR being observed when the MAF are high.
-%Conclusions: The use of dPCR allows the detection of low-frequency tumor-specific mutations in plasma with a greater sensitivity compared to NGS providing the high accuracy and sensitivity essential for liquid biopsies.
+Regarding the different types of the verified variants, they are summarized at a cohort level in \autoref{fig:Waterfall} along with the main clinical characteristics of the patients. In this context, 14 subjects (46.7\%) were identified with multiple alterations. The most frequent mutation type was missense SNPs, detected in 40 different cases (29 in TP35, 8 in ALK, 2 in PIK3CA, and 1 in KRAS). Additionally, 12 InDels were also identified (11 in TP35 and 1 in FGFR1).
 
-% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6225899/
-% In ALK-rearranged NSCLC co-occurring TP53 mutations predict an unfavorable outcome of systemic therapy.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter_4/waterfall.png}
+    \caption{Co-mutation plot of the subjects of this study and their corresponding somatic mutations. The clinical features of each of the patients (gender, smoking status, stage, histology, and ECOG performance status) and the characteristics of their mutations (type, prevalence, and associated gene) are shown. The multiple alterations class appear broken down into the subtypes that compose it.}
+    \label{fig:Waterfall}
+\end{figure}
 
-% NSCLC_alterations
-% Furthermore, tumours bearing co-mutations in TP53 exhibit higher degrees of copy number genomic instability (aneuploidy) and a higher somatic mutation burden. Therefore, TP53 co-mutations impact the natural history of EGFR-mutant NSCLC at least partially by allowing tolerance of a greater degree of genomic instability, which results in both larger numbers of co-occurring truncal drivers and late subclonal diversification with focal emergence of high-amplitude amplifications and deletions in mediators of therapeutic resistance104. In keeping with a more complex genomic landscape and a larger burden of clonal or subclonal co-drivers, multiple clinical studies have identified TP53 co-alterations as a negative prognostic marker in EGFR-mutant LUAD and a consistent predictor of worse clinical outcomes following EGFR TKI therapy
-
-% CCLM
-% Most mutations identified were single-nucleotide polymorphisms (n = 49). We also detected deletions (n = 11) and one insertion (Supplemen- tary Table 3).
-% Interestingly, the resistance mutation to ALK inhibitors, p.G1269A in the kinase domain of ALK, was found in two ALK-positive NSCLC patients who had progressed on crizotinib (Figure 2). 
-
-% Todos estos resultados fueron utilizados posteriormente para establecer los parámetros del algoritmo implementado.
-
-
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.88\textwidth]{Images/chapter_4/all_mutations.png}
-%    \caption{Frequency of the mutations identified in the study population, as well as the the different types of missense mutations detected in the ALK gene.}
-%    \label{fig:All_mutations}
-%\end{figure}
-
-% 53 mutations were identified after analyzing and manually filtering (as described in \autoref{sec:Secondary_analysis}) the variants obtained from the sequencer. As reflected in \autoref{fig:All_mutations}, the most widely represented mutations occurred in the TP53 gene, with 41 cases. In fact, it was common to find multiple alterations of this type in the same sample. ALK mutations, which are the target of this study, were identified in 8 samples. On the other hand, alterations were also detected in the PIK3CA, KRAS, and FGFR1 genes, appearing both individually and coexisting with the rest of the detected variants.
+Finally, all these results, and especially the confirmed positive (N$=$8) and negative (N$=$19) variants associated with the ALK rearrangements, were used to adjust the different parameters of the implemented algorithm.
 
 \section{Implemented Pipeline}
 
@@ -237,12 +291,74 @@ It should also be noted that several additional screens have been implemented to
 
 \section{Performance of the Developed Algorithm}
 
+Given the limited clinical data, the validation of the algorithm had to be performed on the initial study population. In this way, the same 39 initial sequenced samples were used to study the performance of the algorithm regarding the ALK mutations confirmed by dPCR, which was considered the gold standard. To asses this, sensitivity, specificity, and positive and negative predictive values were calculated based on the 30 patients in this study (.... table).
+
+
+
 % Paper nuevo
-% In order to increase sensitivity for the detection of somatic mutations in ALK locus we developed an algorithm designed to this aim. To do so, all ALK variants present in non-filtered-oncomine.tsv file were analyzed by dPCR. In total, 25 variants in ALK locus detected in 22 samples were analyzed by dPCR.  Considering the gold standard the dPCR results and assuming a prevalence of ALK mutations of 20%, the sensitivity, specificity, positive predictive value and negative predictive value of the designed algorithm were 77.8%, 76.5%, 45.3% and 93.2%, respectively (Table 2). Noteworthy, the oncomine variants filter v5.10 only detected ALK mutations in 3 patients (Table 3).
+% In order to increase sensitivity for the detection of somatic mutations in ALK locus we developed an algorithm designed to this aim. 
+% To do so, all ALK variants present in non-filtered-oncomine.tsv file were analyzed by dPCR. 
+% In total, 25 variants in ALK locus detected in 22 samples were analyzed by dPCR.  
+% Considering the gold standard the dPCR results and assuming a prevalence of ALK mutations of 20%, the sensitivity, specificity, positive predictive value and negative predictive value of the designed algorithm were 77.8%, 76.5%, 45.3% and 93.2%, respectively (Table 2). 
+%Noteworthy, the oncomine variants filter v5.10 only detected ALK mutations in 3 patients (Table 3).
 
 
-\section{Utility}
-
-% A key benefit for physicians is the serial use of digital PCR to monitor one or more driver mutations throughout treatment to determine response and recurrence since the level of mutated DNA found in liquid biopsies has been found to reflect the size of the tumor(s). It is also possible to use NGS to track progress; however, in these cases it is less practical due to cost and longer turnaround time.
 
 
+% CLARA
+% Finalmente, para valorar la capacidad diagnóstica del test en comparación con la PCR digital (que fue considerada el método gold standard), se calculó la sensibilidad, la especificidad, valor predictivo positivo, negativo y razón de verosimilitud positiva y negativa.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALK white type 22
+
+% 7 pacientes no presentaban ninguna mutación
+% 1 paciente solo con ALK
+% 7 pacientes con ALK + TP53
+% 12 pacientes solo con TP53
+% 1 paciente con PIK3CA + TP53
+% 1 paciente PIK3CA
+% 1 paciente con FGFR1 + KRAS + TP53
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   TOTAL = 30
+
+% MUTACIONES/SAMPLEs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % 11 patients with multiple TP53 mutations
+    % 3 patients with InDels
+        % 1 FGFR1
+        % 2 TP53
+    % 8 patients with ALK SNPs
+    % 8 patients with TP53 SNPs
+    % 1 patients with KRAS SNPs
+    % 2 patients with PIK3CA SNPs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 40 missenses
+% 12 indles
+
+% ALK: 8 + 1 missenses
+% FGFR1: 1 indel
+% KRAS: 1 messense
+% PIK3CA: 2 missenses
+% TP53: 
+%     2 indels
+%     8 missenses
+%     *11* multiple mutations
+%           21+1 missenses
+%           9 indels
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  TOTAL = 52+2
+
+
+% MUTACIONES/SAMPLEs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% POR IGV %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 40
+    % 1 FGFR1
+    % 19 + 1 (misma mutación) + 19 (naranja) TP53 %%%%  39
+% POR DPCR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 14
+    % 8 + 1 (hay una misma mutación),  ALK (LA ROSA NO SE CUENTA)
+    % 0 (en la azul no queda material) + 2 TP53
+    % 2 PIK3CA
+    % 1 KRAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   TOTAL = 54
