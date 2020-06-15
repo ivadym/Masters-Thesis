@@ -157,7 +157,7 @@ In this context, 52 unique mutations were finally reported. As shown in \autoref
 
 The average number of variants per patient was 1.7. However, 7 patients did not present any mutation and in 22 of them, no ALK alteration was found. Furthermore, there were no significant differences in the amount of cfDNA input between patients with and without an associated mutation. In this sense, only 1 subject had a single ALK mutation, while the remaining 7 patients had it coexisting with alterations in the TP53 gene.
 
-The ALK rearrangements confirmed by dPCR are represented in \autoref{tab:ALK_dPCR}. As can also be seen in \autoref{fig:All_mutations}, the most prevalent mutation was G1202R, identified in 4 different patients who had progressed on alectinib (N$=$3) and ceritinib (N$=$1). The G1123C mutation (N$=$1) also arose as a result of the failure of a second-generation inhibitor. The remaining G1269A (N$=$2) and A1200V (N$=$1) alterations were detected upon progression to crizotinib. Overall, practically all these mutations were identified in patients with stage IV NSCLC (87.5\%), except for the G1123C variant, which was carried by a subject with stage IIIB. Furthermore, these mutations were detected at a median MAF of 0.4\%.
+The ALK variants confirmed by dPCR are represented in \autoref{tab:ALK_dPCR}. As can also be seen in \autoref{fig:All_mutations}, the most prevalent mutation was G1202R, identified in 4 different patients who had progressed on alectinib (N$=$3) and ceritinib (N$=$1). The G1123C mutation (N$=$1) also arose as a result of the failure of a second-generation inhibitor. The remaining G1269A (N$=$2) and A1200V (N$=$1) alterations were detected upon progression to crizotinib. Overall, practically all these mutations were identified in patients with stage IV NSCLC (87.5\%), except for the G1123C variant, which was carried by a subject with stage IIIB. Furthermore, these mutations were detected at a median MAF of 0.4\%.
 
 \begin{table}[ht]
 \centering
@@ -198,7 +198,7 @@ Regarding the different types of the verified variants, they are summarized at a
     \label{fig:Waterfall}
 \end{figure}
 
-Finally, all these results, and especially the confirmed positive (N$=$8) and negative (N$=$19) variants associated with the ALK rearrangements, were used to adjust the different parameters of the implemented algorithm.
+Finally, all these results, and especially the confirmed positive (N$=$8) and negative (N$=$19) variants associated with the ALK mutations, were used to adjust the different parameters of the implemented algorithm.
 
 \section{Implemented Pipeline}
 
@@ -275,7 +275,7 @@ The implemented user interface were developed to facilitate data input and inter
     \begin{subfigure}{0.52\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Images/chapter_4/GUI_3.png}
-        \caption{Results screen showing 2 filtered SNPs, their $.tsv$ row number, and their alternate allele ID.}
+        \caption{Results screen showing 2 filtered SNPs and their $.tsv$ row number and alternate allele ID.}
         \label{fig:GUI_3}
     \end{subfigure}
     \hfill
@@ -291,22 +291,39 @@ It should also be noted that several additional screens have been implemented to
 
 \section{Performance of the Developed Algorithm}
 
-Given the limited clinical data, the validation of the algorithm had to be performed on the initial study population. In this way, the same 39 initial sequenced samples were used to study the performance of the algorithm regarding the ALK mutations confirmed by dPCR, which was considered the gold standard. To asses this, sensitivity, specificity, and positive and negative predictive values were calculated based on the 30 patients in this study (.... table).
+The 39 initial sequenced samples were used to study the performance of the implemented algorithm regarding the ALK mutations confirmed by dPCR, which was considered the gold standard. To asses this, sensitivity, specificity, and positive and negative predictive values, shown in \autoref{tab:ALG_performance}, were calculated based on the 30 patients in this study. Furthermore, a prevalence of ALK mutations of 20\% was assumed for these calculations since approximately 20–50\% of patients treated with an ALK inhibitor end up developing some type of resistance \cite{TKI_resistance, ALK_resistance}. 
+
+\begin{table}[ht]
+\centering
+\resizebox{0.75\textwidth}{!}{
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{c}{\cellcolor[HTML]{C0C0C0}\textbf{Statistic}} & \textbf{Value} & \textbf{95\% CI}   \\
+\rowcolor[HTML]{FFFFFF} 
+Sensitivity & 87.50\% & 47.35\% to 99.68\% \\
+\rowcolor[HTML]{EFEFEF} 
+Specificity & 81.82\% & 59.72\% to 94.81\% \\
+\rowcolor[HTML]{FFFFFF} 
+Disease prevalence & 20.00\% & - \\
+\rowcolor[HTML]{EFEFEF} 
+Positive Predictive Value & 54.61\% & 32.31\% to 75.20\% \\
+\rowcolor[HTML]{FFFFFF} 
+Negative Predictive Value & 96.32\% & 80.55\% to 99.40\% \\
+\rowcolor[HTML]{EFEFEF} 
+Accuracy & 82.95\% & 64.83\% to 94.13\%
+\end{tabular}}
+\caption{Performance of the algorithm developed to filter the ALK mutations obtained from NGS. The results obtained by dPCR were taken as the gold standard.}
+\label{tab:ALG_performance}
+\end{table}
+
+In this context, the algorithm managed to successfully identify 7 of the 8 mutations confirmed by dPCR, reaching a specificity of 87.50\%. Specifically, the $AHT$ patient sample was discarded by the algorithm (\autoref{tab:ALK_dPCR}). On the other hand, 4 patients were incorrectly classified as carriers of ALK mutations, thus a specificity of 81.82\% was obtained. Finally, the algorithm reported an accuracy of 82.95\%, with a remarkable performance in terms of discarding samples without any mutation since a negative predictive value of 96.32\% was achieved.
+
+Noteworthy, the Oncomine\texttrademark{} Variants v5.12 filter only detected ALK mutations in 3 patients.
 
 
 
-% Paper nuevo
-% In order to increase sensitivity for the detection of somatic mutations in ALK locus we developed an algorithm designed to this aim. 
-% To do so, all ALK variants present in non-filtered-oncomine.tsv file were analyzed by dPCR. 
-% In total, 25 variants in ALK locus detected in 22 samples were analyzed by dPCR.  
-% Considering the gold standard the dPCR results and assuming a prevalence of ALK mutations of 20%, the sensitivity, specificity, positive predictive value and negative predictive value of the designed algorithm were 77.8%, 76.5%, 45.3% and 93.2%, respectively (Table 2). 
-%Noteworthy, the oncomine variants filter v5.10 only detected ALK mutations in 3 patients (Table 3).
 
-
-
-
-% CLARA
-% Finalmente, para valorar la capacidad diagnóstica del test en comparación con la PCR digital (que fue considerada el método gold standard), se calculó la sensibilidad, la especificidad, valor predictivo positivo, negativo y razón de verosimilitud positiva y negativa.
 
 
 
