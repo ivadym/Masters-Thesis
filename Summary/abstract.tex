@@ -1,16 +1,24 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-% Purpose
-% Methods
-% Results
-% Conclusions
-...
+Lung cancer is the most common cancer worldwide, accounting for 2.1 million new cases and 1.8 million deaths in 2018. Therefore, it is one of the most lethal types since more than half of people die within one year of being diagnosed.
 
-\begingroup % Multiple chapters in the same page
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-\chapter*{Keywords}
-\endgroup
+Non-small cell lung cancer (NSCLC) is the most prevalent type, accounting for about 80–90\%. Besides, more than 50\% of these patients are diagnosed in an advanced stage or have gained metastases and thus they have lost the opportunity for surgical treatment. In this way, targeted therapy has gradually been paid more attention to and has become the first-line treatment program.
 
-...
+Currently, optimal management of NSCLC requires tumors to be periodically examined for a variety of predictive and prognostic biomarkers. However, tissue biopsies are an invasive procedure limited to certain locations, not easily acceptable in the clinic, and generally unable to reflect the clonal heterogeneity of the tumor. In this context, liquid biopsy has emerged as a solid alternative to this traditional invasive technique, using the different body fluids (peripheral blood, cerebrospinal fluid, etc.) of cancer patients as a source of cancer-derived material.
+
+Over the last decade, the recognition of molecularly defined tumor subsets with unique sensitivities to targeted therapeutics has transformed the management of patients with ALK-mutated lung adenocarcinoma, helping the clinicians to move towards personalized medicine. Molecular therapy is now the standard of care and patient outcomes have greatly improved. However, acquired resistance to targeted agents has become a pivotal issue limiting the long-term benefit of such therapies. Therefore, it becomes evident that real-time detection technologies applied to cancer patients are needed urgently in clinical practice to guide the treatment at the molecular level after mutations or resistance emergence.
+
+In this context, this project incorporated into standard clinical practice an automatic way to filter and select genetic variants by analyzing and interpreting next-generation sequencing (NGS) data. Specifically, the developed algorithm is capable of identifying clinically relevant deviations from a reference genome in clinical samples analyzed by NGS, allowing clinicians to act more easily on genomic information at the point of patient care. Currently, the analysis of the raw data obtained from the sequencer is not standardized, and before the implementation of the algorithm, it was performed manually, with all the drawbacks that this entailed.
+
+The process of algorithm design and evaluation was carried out on a study population of 30 patients with advanced NSCLC. After performing a digital PCR confirmation that detected 8 subjects with some type of mutation in the ALK gene, the algorithm showed an accuracy of 82.95\% (for a prevalence of ALK mutations of 20\%), identifying 7 (87.5\%) out of 8 patients as carriers of an ALK alteration. 
+Overall, this study has managed to combine clinical procedures and bioinformatic analysis, obtaining a direct impact at four different levels: (i) for the detection of oncogenic drivers; (ii) for the identification of resistance mutations in patients relapsing on targeted therapies; (iii) for monitoring response to therapies; and (iv) for the prediction of clinical outcomes.
+
+\subsubsection*{Keywords}
+
+\footnotesize
+Liquid biopsy, circulating tumor DNA (ctDNA), non-small cell lung cancer (NSCLC), targeted therapy, anaplastic lymphoma kinase (ALK), next-generation sequencing (NGS), bioinformatics, digital PCR (dPCR)
+\normalsize
+
+
+
