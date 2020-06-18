@@ -162,7 +162,7 @@ Furthermore, with the Ion Reporter\texttrademark{} platform, it was possible to 
 
 On the other hand, it is possible to download all this raw data in a \textit{.tsv} file, which includes an even more detailed analysis of all the variants. This file is precisely the one that was used to design the bioinformatic pipeline, along with the parameters described above.
 
-Finally, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently confirmed by dPCR.
+In addition, all candidate mutations were manually reviewed using the Integrative Genomics Viewer (IGV) v2.3.40 to be subsequently confirmed by dPCR. The polymorphism were also filtered out based on the following population databases: 1000 Genome Project, NHLBI GO Exome Sequencing Project (ESP), database of single nucleotide polymorphisms (dbSNP), and ExAC (genomAD). Finally, the clinical significance of somatic variants was determined according to the Standards and Guidelines for the Interpretation and Reporting of Sequence Variants in Cancer \cite{Standard_NGS}.
 
 \subsection{Confirmation of the Sequenced Results}
 
@@ -171,13 +171,15 @@ Digital PCR is a tool that is used to improve the efficiency of the NGS workflow
 Briefly, dPCR is based on the fact that the random distribution of molecules in many partitions follows a Poisson distribution. Each partition, which contains a specific labeled DNA sequence, acts as an individual and isolated PCR reaction. After amplification, the augmented target sequences are detected by fluorescence, which is sufficient to determine their concentration. In this study, this process was carried out following the next steps:
 \begin{enumerate}[font=\bfseries]
     \item \textbf{Set up of the dPCR reaction}. It was performed by mixing a specific sample with the master mix and the assays, obtaining a final volume of 18 $\mu L$. Specifically, this reaction included 8.55 $\mu L$ of template cfDNA or cDNA, 9 $\mu L$ of 20X QuantStudio\texttrademark{} 3D Master Mix and 0.45 $\mu L$ of 40X TaqMan\texttrademark{} assays (predesigned TaqMan\texttrademark{} Liquid Biopsy dPCR assay and custom TaqMan\texttrademark{} assay). These assays include specific primers and labeled probes that have a fluorescent reporter dye (VIC\texttrademark{} or FAM\texttrademark{}) attached to its 5' end, and a quencher dye at its 3' end (ROX\texttrademark{}). In all assays, probes complementary to mutated and wild type (WT) DNA sequences were labeled with the FAM\texttrademark{} and VIC\texttrademark{} dye respectively.
-    \item \textbf{Chip loading}. 14.5 $\mu L$ of the dPCR reaction was loaded using the QuantStudio\texttrademark{} 3D Digital PCR Chip Loader into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2, which has 20000 wells containing a DNA molecule that will be amplified independently in the thermocycling phase. In addition, positive and negative controls were included in each dPCR run to ensure that the primers have attached to the DNA strand and that there has been no foreign DNA contamination.
-    \begin{figure}[t]
+    \item \textbf{Chip loading} (\autoref{fig:Chip_loading}). 14.5 $\mu L$ of the dPCR reaction was loaded using the QuantStudio\texttrademark{} 3D Digital PCR Chip Loader into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2, which has 20000 wells containing a single DNA molecule that will be amplified independently in the next phase. In addition, positive and negative controls were included in each dPCR run to ensure that the primers have attached to the DNA strand and that there has been no contamination.
+    
+    \begin{figure}[ht]
         \centering
         \includegraphics[width=\textwidth]{Images/chapter_3/chip_loading.png}
-        \caption{ Chip loading. Charging of the dPCR reaction into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2 (1), lid application (2), filling of the assembly with Immersion Fluid (3), and sealing of the loading port (4). Modified image from \cite{dPCR_QuantStudio}.}
+        \caption{ Chip loading: (1) charging of the dPCR reaction into the QuantStudio\texttrademark{} 3D Digital PCR 20K Chip v2; (2) lid application; (3) filling of the assembly with Immersion Fluid; and (4) sealing of the loading port. Modified image from \cite{dPCR_QuantStudio}.}
         \label{fig:Chip_loading}
     \end{figure}
+    
     \item \textbf{Thermocycling}. This process, which was divided into 3 consecutive stages, was carried out with the QuantStudio\textsuperscript\textregistered{} 3D Digital PCR System (Applied Biosystems, South San Francisco, CA, USA). The temperature, duration, and number of cycles for each of the stages are summarized in \autoref{tab:dPCR_stages}. During the amplification stage, the Taq polymerase enzyme cleaves the aforementioned FAM\texttrademark{} and VIC\texttrademark{} bound probes, generating fluorescent signals that will be recorded and associated with specific wells on the chip in the next step.
     \begin{table}[ht]
         \centering
@@ -200,7 +202,7 @@ Briefly, dPCR is based on the fact that the random distribution of molecules in 
         FAM_{copies} &\equiv \text{Number of reads of the mutated sequences} \notag \\
         VIC_{copies} &\equiv \text{Number of reads of the WT sequences} \notag
     \end{align}
-
+    
     \begin{figure}[t]
         \centering
         \begin{subfigure}{0.30\textwidth}
